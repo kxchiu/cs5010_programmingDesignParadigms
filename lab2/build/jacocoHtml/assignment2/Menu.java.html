@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Menu.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lab2</a> &gt; <a href="index.source.html" class="el_package">assignment2</a> &gt; <span class="el_source">Menu.java</span></div><h1>Menu.java</h1><pre class="source lang-java linenums">package assignment2;
+
+import java.util.List;
+import java.util.Objects;
+
+/**
+ * This class represents the menu of a restaurant given the details--meals, desserts, beverages, and
+ * drinks.
+ */
+public class Menu {
+  List&lt;String&gt; meals;
+  List&lt;String&gt; desserts;
+  List&lt;String&gt; beverages;
+  List&lt;String&gt; drinks;
+
+  /**
+   * Constructs a new menu given the details.
+   * @param meals the meals
+   * @param desserts the desserts
+   * @param beverages the beverages
+   * @param drinks the drinks
+   */
+  public Menu(List&lt;String&gt; meals, List&lt;String&gt; desserts, List&lt;String&gt; beverages,
+<span class="nc" id="L24">      List&lt;String&gt; drinks) {</span>
+<span class="nc" id="L25">    this.meals = meals;</span>
+<span class="nc" id="L26">    this.desserts = desserts;</span>
+<span class="nc" id="L27">    this.beverages = beverages;</span>
+<span class="nc" id="L28">    this. drinks = drinks;</span>
+<span class="nc" id="L29">  }</span>
+
+  /**
+   * Sets the meals on the menu.
+   * @param meals the meals
+   */
+  public void setMeals(List&lt;String&gt; meals) {
+<span class="nc" id="L36">    this.meals = meals;</span>
+<span class="nc" id="L37">  }</span>
+
+  /**
+   * Sets the desserts on the menu.
+   * @param desserts the desserts
+   */
+  public void setDesserts(List&lt;String&gt; desserts) {
+<span class="nc" id="L44">    this.desserts = desserts;</span>
+<span class="nc" id="L45">  }</span>
+
+  /**
+   * Sets the beverages on the menu.
+   * @param beverages the beverages
+   */
+  public void setBeverages(List&lt;String&gt; beverages) {
+<span class="nc" id="L52">    this.beverages = beverages;</span>
+<span class="nc" id="L53">  }</span>
+
+  /**
+   * Sets the drinks on the menu.
+   * @param drinks the drinks
+   */
+  public void setDrinks(List&lt;String&gt; drinks) {
+<span class="nc" id="L60">    this.drinks = drinks;</span>
+<span class="nc" id="L61">  }</span>
+
+  /**
+   * Returns the meals.
+   * @return the meals
+   */
+  public List&lt;String&gt; getMeals() {
+<span class="nc" id="L68">    return this.meals;</span>
+  }
+
+  /**
+   * Returns the desserts.
+   * @return the desserts
+   */
+  public List&lt;String&gt; getDesserts() {
+<span class="nc" id="L76">    return this.desserts;</span>
+  }
+
+  /**
+   * Returns the beverages.
+   * @return the beverages
+   */
+  public List&lt;String&gt; getBeverages() {
+<span class="nc" id="L84">    return this.beverages;</span>
+  }
+
+  /**
+   * Returns the drinks.
+   * @return the drinks
+   */
+  public List&lt;String&gt; getDrinks() {
+<span class="nc" id="L92">    return this.drinks;</span>
+  }
+
+  /**
+   * Returns the menu details as String.
+   * @return the menu details
+   */
+  public String toString() {
+    String str;
+<span class="nc" id="L101">    str = &quot;Meals: &quot; + String.join(&quot;, &quot;, this.getMeals()) + &quot;\n&quot;</span>
+<span class="nc" id="L102">        + &quot;Desserts: &quot; + String.join(&quot;, &quot;, this.getDesserts()) + &quot;\n&quot;</span>
+<span class="nc" id="L103">        + &quot;Beverages: &quot; + String.join(&quot;, &quot;, this.getBeverages()) + &quot;\n&quot;</span>
+<span class="nc" id="L104">        + &quot;Drinks: &quot; + String.join(&quot;, &quot;, this.getDrinks());</span>
+<span class="nc" id="L105">    return str;</span>
+  }
+
+  /**
+   * Compares the given object to the menu and returns the result as Boolean.
+   * @param o the given object
+   * @return the comparison result
+   */
+  @Override
+  public boolean equals(Object o) {
+<span class="nc bnc" id="L115" title="All 2 branches missed.">    if (this == o) {</span>
+<span class="nc" id="L116">      return true;</span>
+    }
+<span class="nc bnc" id="L118" title="All 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="nc" id="L119">      return false;</span>
+    }
+<span class="nc" id="L121">    Menu menu = (Menu) o;</span>
+<span class="nc bnc" id="L122" title="All 2 branches missed.">    return Objects.equals(menu.meals, this.meals)</span>
+<span class="nc bnc" id="L123" title="All 2 branches missed.">        &amp;&amp; Objects.equals(menu.desserts, this.desserts)</span>
+<span class="nc bnc" id="L124" title="All 2 branches missed.">        &amp;&amp; Objects.equals(menu.beverages, this.beverages)</span>
+<span class="nc bnc" id="L125" title="All 2 branches missed.">        &amp;&amp; Objects.equals(menu.drinks, this.drinks);</span>
+  }
+
+  /**
+   * Returns a hash integer of the menu details.
+   * @return a hash integer of the menu details
+   */
+  @Override
+  public int hashCode() {
+<span class="nc" id="L134">    return Objects.hash(this.getMeals(), this.getDesserts(), this.getBeverages(), this.getDrinks());</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

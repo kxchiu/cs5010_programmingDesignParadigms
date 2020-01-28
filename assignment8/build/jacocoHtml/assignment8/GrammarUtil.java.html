@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GrammarUtil.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment8</a> &gt; <a href="index.source.html" class="el_package">assignment8</a> &gt; <span class="el_source">GrammarUtil.java</span></div><h1>GrammarUtil.java</h1><pre class="source lang-java linenums">package assignment8;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
+
+<span class="nc" id="L7">public class GrammarUtil {</span>
+
+  private static String[] files;
+  private static String JSON_FOLDER;
+<span class="nc" id="L11">  private static List&lt;Map&lt;String, String[]&gt;&gt; jsonToMapList = new ArrayList();</span>
+
+  public static String initiate() throws IOException {
+<span class="nc" id="L14">    JSON_FOLDER = &quot;grammars&quot;;</span>
+<span class="nc" id="L15">    files = new File(JSON_FOLDER).list();</span>
+<span class="nc" id="L16">    System.out.println(files.toString());</span>
+<span class="nc bnc" id="L17" title="All 2 branches missed.">    for (String filename: files) {</span>
+<span class="nc" id="L18">      jsonToMapList.add(JSONToMap.parse(JSON_FOLDER + File.separator + filename));</span>
+    }
+<span class="nc" id="L20">    return askToSelectJson(jsonToMapList);</span>
+  }
+
+  private static String askToSelectJson(List&lt;Map&lt;String, String[]&gt;&gt; jsonToMapList) {
+<span class="nc" id="L24">    return sentencesOfJSON(jsonToMapList.get(0));</span>
+  }
+
+  private static boolean responseIsInvalid(String response) {
+<span class="nc bnc" id="L28" title="All 2 branches missed.">    return !responseIsValid(response);</span>
+  }
+
+  private static boolean responseIsValid(String response) {
+<span class="nc bnc" id="L32" title="All 4 branches missed.">    return responseIsQ(response) || responseIsWithinIndexRange(response);</span>
+  }
+
+  private static boolean responseIsQ(String response) {
+<span class="nc" id="L36">    return response.equals(EnumStrings.NO.getLiteral());</span>
+  }
+
+  private static boolean responseIsWithinIndexRange(String response) {
+<span class="nc" id="L40">    Integer index = new Integer(response);</span>
+<span class="nc bnc" id="L41" title="All 4 branches missed.">    return index &gt;= 1 &amp;&amp; index &lt;= files.length;</span>
+  }
+
+  private static String recursiveReplacer(Map&lt;String, String[]&gt; map, String line) {
+<span class="nc" id="L45">    String[] words = line.split(&quot; &quot;);</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">    for (int i = 0; i &lt; words.length; i++) {</span>
+<span class="nc" id="L47">      String word = words[i];</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">      if (isPlaceholder(word)) {</span>
+<span class="nc" id="L49">        word = word.substring(1, word.length() - 1).toLowerCase();</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">        if (!map.containsKey(word)) {</span>
+<span class="nc" id="L51">          throw new IllegalArgumentException(&quot;No non-terminal key: &quot; + word);</span>
+        }
+<span class="nc" id="L53">        word = recursiveReplacer(map, map.get(word)[new Random().nextInt(map.get(word).length)]);</span>
+      }
+<span class="nc" id="L55">      words[i] = word;</span>
+    }
+<span class="nc" id="L57">    return String.join(&quot; &quot;, words);</span>
+  }
+
+  private static String modifyForPunctuations(String[] words, int i, String word) {
+<span class="nc bnc" id="L61" title="All 4 branches missed.">    if (word.equals(&quot;.&quot;) || word.equals(&quot;,&quot;)) {</span>
+<span class="nc" id="L62">      words[i-1] = words[i-1] + word;</span>
+<span class="nc" id="L63">      word = &quot;&quot;;</span>
+    }
+<span class="nc" id="L65">    return word;</span>
+  }
+
+  private static boolean isPlaceholder(String word) {
+<span class="nc bnc" id="L69" title="All 4 branches missed.">    return word.startsWith(&quot;&lt;&quot;) &amp;&amp; word.endsWith(&quot;&gt;&quot;);</span>
+  }
+
+  private static String replacePlaceholders(Map&lt;String, String[]&gt; map) {
+<span class="nc" id="L73">    String line = map.get(EnumGrammarKeys.START.getKey())[0];</span>
+//    return iterativeReplacer(map, line);
+<span class="nc" id="L75">    return recursiveReplacer(map, line);</span>
+  }
+
+  private static String iterativeReplacer(Map&lt;String, String[]&gt; map, String line) {
+<span class="nc bnc" id="L79" title="All 4 branches missed.">    while (line.contains(EnumStrings.PLACEHOLDER_OPENER.getLiteral()) &amp;&amp; line.contains(EnumStrings.PLACEHOLDER_CLOSER.getLiteral())) {</span>
+<span class="nc" id="L80">      Integer startIndex = line.indexOf(EnumStrings.PLACEHOLDER_OPENER.getLiteral());</span>
+<span class="nc" id="L81">      Integer endIndex = line.indexOf(EnumStrings.PLACEHOLDER_CLOSER.getLiteral());</span>
+<span class="nc" id="L82">      String token = line.substring(startIndex + 1, endIndex).toLowerCase();</span>
+      String selected;
+<span class="nc bnc" id="L84" title="All 2 branches missed.">      if (map.containsKey(token)) {</span>
+<span class="nc" id="L85">        selected = map.get(token)[new Random().nextInt(map.get(token).length)];</span>
+      } else {
+<span class="nc" id="L87">        throw new IllegalArgumentException(&quot;No non-terminal key: &quot; + token);</span>
+      }
+<span class="nc" id="L89">      String before = line.substring(0, startIndex);</span>
+<span class="nc" id="L90">      String after = line.substring(endIndex + 1);</span>
+<span class="nc" id="L91">      line = before + selected + after;</span>
+<span class="nc" id="L92">    }</span>
+<span class="nc" id="L93">    return line;</span>
+  }
+
+  private static String sentencesOfJSON(Map&lt;String, String[]&gt; stringMap) {
+<span class="nc" id="L97">    String string = replacePlaceholders(stringMap);</span>
+<span class="nc" id="L98">    string = string.replaceAll(&quot;\\s\\.&quot;, &quot;.&quot;);</span>
+<span class="nc" id="L99">    string = string.replaceAll(&quot;\\s,&quot;, &quot;,&quot;);</span>
+<span class="nc" id="L100">    string = string.replaceAll(&quot;\\s'&quot;, &quot;'&quot;);</span>
+<span class="nc" id="L101">    return string;</span>
+  }
+
+  private static boolean responseIsNeitherYOrN(String response) {
+<span class="nc bnc" id="L105" title="All 4 branches missed.">    return !response.equals(EnumStrings.YES.getLiteral()) &amp;&amp; !response.equals(EnumStrings.NO.getLiteral());</span>
+  }
+
+  private static void printFiles(List&lt;Map&lt;String, String[]&gt;&gt; files) {
+<span class="nc bnc" id="L109" title="All 2 branches missed.">    for (int i = 0; i &lt; files.size(); i++) {</span>
+<span class="nc" id="L110">      System.out.println((i + 1) + &quot;. &quot; + files.get(i).getOrDefault(EnumGrammarKeys.GRAMMAR_TITLE.getKey(),</span>
+<span class="nc" id="L111">          new String[]{EnumStrings.NO_TITLE.getLiteral()})[0]);</span>
+    }
+<span class="nc" id="L113">  }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

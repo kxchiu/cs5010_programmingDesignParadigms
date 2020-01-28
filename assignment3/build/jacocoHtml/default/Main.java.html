@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment3</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ * This class is the Main class that instructs a CSV reader to process the given CSV file and
+ * a message generator to create message files.
+ */
+<span class="nc" id="L14">public class Main {</span>
+	private static List&lt;Person&gt; persons;
+	private static CsvReader csvReader;
+	private static MessageGenerator messageGenerator;
+
+	public static void main(String[] args) throws IOException {
+		// Test string args
+		// args = new String[]{&quot;--letter&quot;, &quot;--letter-template&quot;, &quot;lettertemplate.txt&quot;,
+		// &quot;--output-dir&quot;, &quot;letters&quot;, &quot;--csv-file&quot;, &quot;insurancecompanymembers.csv&quot;};
+
+		// Check for args error: if any, print error message
+<span class="nc bnc" id="L25" title="All 2 branches missed.">		if (!checkArg(args)) {</span>
+<span class="nc" id="L26">			printUsageMsg(args);</span>
+		} else { // If no error, do something
+<span class="nc" id="L28">			csvReader = new CsvReader();</span>
+<span class="nc" id="L29">			Path csvFile = Paths.get(args[indexOfArg(&quot;\\.csv&quot;, args)]);</span>
+<span class="nc" id="L30">			persons = new ArrayList&lt;Person&gt;();</span>
+<span class="nc" id="L31">			persons = csvReader.writeToPerson(persons, csvFile);</span>
+<span class="nc" id="L32">			Path txtFile = Paths.get(args[indexOfArg(&quot;\\.txt&quot;, args)]);</span>
+<span class="nc" id="L33">			Path outputDir = Paths.get(args[indexOfArg(&quot;output&quot;, args) + 1]);</span>
+<span class="nc" id="L34">			messageGenerator = new MessageGenerator();</span>
+<span class="nc" id="L35">			messageGenerator.generateMsg(persons, txtFile, outputDir);</span>
+		}
+<span class="nc" id="L37">	}</span>
+
+	/**
+	 * Returns the index of the given pattern String as Int.
+	 * @param patternString the given pattern String
+	 * @param args the given arguments
+	 * @return the index of the given pattern String
+	 */
+	private static int indexOfArg(String patternString, String[] args) {
+<span class="nc" id="L46">		Pattern pattern = Pattern.compile(patternString);</span>
+		Matcher matcher;
+<span class="nc bnc" id="L48" title="All 2 branches missed.">		for (int i = 0; i &lt; args.length; i++) {</span>
+<span class="nc" id="L49">			matcher = pattern.matcher(args[i]);</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">			if (matcher.find()) {</span>
+<span class="nc" id="L51">				return i;</span>
+			}
+		}
+<span class="nc" id="L54">		return -1;</span>
+	}
+
+	/**
+	 * Check for any missing arguments in the args and return a Boolean.
+	 * @param args the given arguments
+	 * @return if missing any argument
+	 */
+	private static boolean checkArg(String[] args) {
+<span class="nc bnc" id="L63" title="All 4 branches missed.">		return checkArgExists(&quot;--output-dir&quot;, args) &amp;&amp; checkArgExists(&quot;--csv-file&quot;, args)</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">				&amp;&amp; (checkArgExists(&quot;--email&quot;, args) == checkArgExists(&quot;--email-template&quot;, args))</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">				&amp;&amp; (checkArgExists(&quot;--letter&quot;, args) == checkArgExists(&quot;--letter-template&quot;, args));</span>
+	}
+
+	/**
+	 * Helper method to find matching argument and return a Boolean.
+	 * @param patternString pattern String to match
+	 * @param args the given arguments
+	 * @return if a match is found
+	 */
+	private static boolean checkArgExists(String patternString, String[] args) {
+<span class="nc" id="L75">		Pattern pattern = Pattern.compile(patternString);</span>
+<span class="nc" id="L76">		Matcher matcher = pattern.matcher(Arrays.toString(args));</span>
+<span class="nc" id="L77">		return matcher.find();</span>
+	}
+
+	/**
+	 * Prints error message.
+	 * @param args the given arguments
+	 */
+	private static void printUsageMsg(String[] args) {
+<span class="nc" id="L85">		String error = Arrays.toString(args);</span>
+<span class="nc" id="L86">		System.out.println(&quot;An error has occurred:\n&quot; + error + &quot;\n&quot;);</span>
+<span class="nc" id="L87">		System.out.println(&quot;Usage:\n&quot;</span>
+				+ &quot;\t--email\t\t\t\t\t\t\t\t\t\tonly generate email messages\n&quot;
+				+ &quot;\t--email-template &lt;file&gt;\t\taccept a filename that holds the email template.\n&quot;
+				+ &quot;\t\tRequired if --email is used\n\n&quot;
+				+ &quot;\t--letter\t\t\t\t\t\t\t\t\tonly generate letter messages\n&quot;
+				+ &quot;\t--letter-template &lt;file&gt;\taccept a filename that holds the letter template.\n&quot;
+				+ &quot;\t\tRequired if --letter is used\n\n&quot;
+				+ &quot;\t--output-dir &lt;path&gt;\t\t\t\taccept a filename that holds the email template.\n\n&quot;
+				+ &quot;\t--csv-file &lt;path&gt;\t\t\t\t\taccept the name of the csv file to process\n\n&quot;
+				+ &quot;Example:\n\t\t--email --email-template email-template.txt --output-dir emails --csv-file&quot;
+				+ &quot; customer.csv\n&quot;
+				+ &quot;\t\t--letter --letter-template letter-template.txt --outputdir letters --csv-file&quot;
+				+ &quot; customer.csv&quot;
+		);
+<span class="nc" id="L101">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

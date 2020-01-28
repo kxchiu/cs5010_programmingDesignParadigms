@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Server.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment8</a> &gt; <a href="index.source.html" class="el_package">assignment8</a> &gt; <span class="el_source">Server.java</span></div><h1>Server.java</h1><pre class="source lang-java linenums">package assignment8;
+
+import java.io.*;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+<span class="nc" id="L11">public class Server {</span>
+
+<span class="nc" id="L13">  private static final Integer portNumber = 1235;</span>
+<span class="nc" id="L14">  private static Map&lt;String, DataOutputStream&gt; users = new ConcurrentHashMap&lt;&gt;();</span>
+<span class="nc" id="L15">  private static ChatProtocol chatProtocol = new ChatProtocol(users);</span>
+
+  public static void main(String[] args) throws Exception {
+<span class="nc" id="L18">    System.out.println(&quot;The chat server is listening to port &quot; + portNumber + &quot;...&quot;);</span>
+<span class="nc" id="L19">    try (ServerSocket listener = new ServerSocket(portNumber)) {</span>
+<span class="nc" id="L20">      ExecutorService pool = Executors.newFixedThreadPool(10);</span>
+      while (true) {
+<span class="nc" id="L22">        pool.execute(new ChatRoomServer(listener.accept()));</span>
+      }
+<span class="nc bnc" id="L24" title="All 4 branches missed.">    }</span>
+  }
+
+  /** The client handler task. */
+  private static class ChatRoomServer implements Runnable {
+    private Socket socket;
+
+<span class="nc" id="L31">    ChatRoomServer(Socket socket) {</span>
+<span class="nc" id="L32">      this.socket = socket;</span>
+<span class="nc" id="L33">    }</span>
+
+    @Override
+    public void run() {
+<span class="nc" id="L37">      System.out.println(&quot;Connected: &quot; + socket.toString());</span>
+      try {
+<span class="nc" id="L39">        DataInputStream inputStream = new DataInputStream(socket.getInputStream());</span>
+<span class="nc" id="L40">        DataOutputStream outputStream = new DataOutputStream(socket.getOutputStream());</span>
+        Integer id;
+<span class="nc bnc" id="L42" title="All 2 branches missed.">        while ((id = inputStream.readInt()) != -1) {</span>
+<span class="nc" id="L43">          inputStream.readChar();</span>
+<span class="nc" id="L44">          chatProtocol.processInput(inputStream, outputStream, id);</span>
+        }
+<span class="nc" id="L46">      } catch (IOException e) {</span>
+<span class="nc" id="L47">        e.printStackTrace();</span>
+<span class="nc" id="L48">      }</span>
+      try {
+<span class="nc" id="L50">        socket.close();</span>
+<span class="nc" id="L51">      } catch (IOException e) {</span>
+<span class="nc" id="L52">        e.printStackTrace();</span>
+<span class="nc" id="L53">      }</span>
+<span class="nc" id="L54">      System.out.println(&quot;Closed: &quot; + socket);</span>
+<span class="nc" id="L55">    }</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

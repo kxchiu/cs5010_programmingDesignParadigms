@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InputInterpreter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment8</a> &gt; <a href="index.source.html" class="el_package">assignment8</a> &gt; <span class="el_source">InputInterpreter.java</span></div><h1>InputInterpreter.java</h1><pre class="source lang-java linenums">package assignment8;
+
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+
+<span class="nc" id="L7">enum EnumCommand {</span>
+<span class="nc" id="L8">  CONNECT(&quot;logon&quot;),</span>
+<span class="nc" id="L9">  DISCONNECT(&quot;logoff&quot;),</span>
+<span class="nc" id="L10">  QUERY_CONNECTED_USERS(&quot;who&quot;),</span>
+<span class="nc" id="L11">  DIRECT_MESSAGE(&quot;@user&quot;),</span>
+<span class="nc" id="L12">  BROADCAST_MESSAGE(&quot;@all&quot;),</span>
+<span class="nc" id="L13">  SEND_INSULT(&quot;!user&quot;),</span>
+<span class="nc" id="L14">  HELP(&quot;?&quot;);</span>
+
+  String command;
+
+<span class="nc" id="L18">  EnumCommand(String command) {</span>
+<span class="nc" id="L19">    this.command = command;</span>
+<span class="nc" id="L20">  }</span>
+
+  public String getCommand() {
+<span class="nc" id="L23">    return command;</span>
+  }
+
+  public static Boolean contains(String command) {
+<span class="nc bnc" id="L27" title="All 2 branches missed.">    for (EnumCommand enumCommand: EnumCommand.values()) {</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">      if (enumCommand.getCommand().equals(command)) {</span>
+<span class="nc" id="L29">        return true;</span>
+      }
+    }
+<span class="nc" id="L32">    return false;</span>
+  }
+
+  public static EnumCommand getEnum(String input) {
+<span class="nc bnc" id="L36" title="All 2 branches missed.">    for (EnumCommand command: EnumCommand.values()) {</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">      if (command.getCommand().equals(input)) {</span>
+<span class="nc" id="L38">        return command;</span>
+      }
+    }
+<span class="nc" id="L41">    throw new IllegalArgumentException();</span>
+  }
+}
+
+public class InputInterpreter {
+
+  private static DataOutputStream outputStream;
+  private static BufferedReader bufferedReader;
+  private static ChatClient chatClient;
+  private static String username;
+  private static String recipient;
+  private static String message;
+  private static String[] tokens;
+
+<span class="nc" id="L55">  public InputInterpreter(DataOutputStream outputStream, BufferedReader bufferedReader, ChatClient chatClient) {</span>
+<span class="nc" id="L56">    this.outputStream = outputStream;</span>
+<span class="nc" id="L57">    this.bufferedReader = bufferedReader;</span>
+<span class="nc" id="L58">    this.chatClient = chatClient;</span>
+<span class="nc" id="L59">  }</span>
+
+  public boolean canInterpret(String input) {
+<span class="nc bnc" id="L62" title="All 2 branches missed.">    if (EnumCommand.contains(firstWordOf(input))) {</span>
+<span class="nc" id="L63">      return true;</span>
+    }
+<span class="nc" id="L65">    System.out.println(&quot;Cannot interpret given command.&quot;);</span>
+<span class="nc" id="L66">    return false;</span>
+  }
+
+  private String firstWordOf(String input) {
+<span class="nc bnc" id="L70" title="All 2 branches missed.">    return input.contains(&quot; &quot;) ? input.substring(0, input.indexOf(&quot; &quot;)) : input;</span>
+  }
+
+  private Boolean isConnected() {
+<span class="nc bnc" id="L74" title="All 2 branches missed.">    return !isDisconnected();</span>
+  }
+
+  private Boolean isDisconnected() {
+<span class="nc bnc" id="L78" title="All 2 branches missed.">    return chatClient.getUsername() == null;</span>
+  }
+
+  public void interpret(String input) throws IOException {
+<span class="nc" id="L82">    String command = firstWordOf(input);</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">    if (canInterpret(input)) {</span>
+<span class="nc bnc" id="L84" title="All 8 branches missed.">      switch (EnumCommand.getEnum(command)) {</span>
+        case CONNECT:
+<span class="nc bnc" id="L86" title="All 2 branches missed.">          if (isConnected()) {</span>
+<span class="nc" id="L87">            System.out.println(&quot;You are already connected with the username: &quot; + chatClient.getUsername());</span>
+<span class="nc" id="L88">            break;</span>
+          }
+<span class="nc" id="L90">          tokens = input.split(&quot; &quot;, 2);</span>
+<span class="nc" id="L91">          username = tokens[1];</span>
+<span class="nc" id="L92">          chatClient.setUsername(username);</span>
+<span class="nc" id="L93">          outputStream.writeInt(19);</span>
+<span class="nc" id="L94">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L95">          outputStream.writeInt(username.getBytes().length);</span>
+<span class="nc" id="L96">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L97">          outputStream.writeBytes(username);</span>
+<span class="nc" id="L98">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L99">          outputStream.flush();</span>
+<span class="nc" id="L100">          break;</span>
+        case DISCONNECT:
+<span class="nc bnc" id="L102" title="All 2 branches missed.">          if (isDisconnected()) {</span>
+<span class="nc" id="L103">            System.out.println(&quot;You are already disconnected.&quot;);</span>
+<span class="nc" id="L104">            break;</span>
+          }
+<span class="nc" id="L106">          username = chatClient.getUsername();</span>
+<span class="nc" id="L107">          chatClient.setUsername(null);</span>
+<span class="nc" id="L108">          outputStream.writeInt(21);</span>
+<span class="nc" id="L109">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L110">          outputStream.writeInt(username.getBytes().length);</span>
+<span class="nc" id="L111">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L112">          outputStream.writeBytes(username);</span>
+<span class="nc" id="L113">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L114">          outputStream.flush();</span>
+<span class="nc" id="L115">          break;</span>
+        case QUERY_CONNECTED_USERS:
+<span class="nc bnc" id="L117" title="All 2 branches missed.">          if (isDisconnected()) {</span>
+<span class="nc" id="L118">            System.out.println(&quot;You are disconnected.&quot;);</span>
+<span class="nc" id="L119">            break;</span>
+          }
+<span class="nc" id="L121">          username = chatClient.getUsername();</span>
+<span class="nc" id="L122">          outputStream.writeInt(22);</span>
+<span class="nc" id="L123">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L124">          outputStream.writeInt(username.getBytes().length);</span>
+<span class="nc" id="L125">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L126">          outputStream.writeBytes(username);</span>
+<span class="nc" id="L127">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L128">          outputStream.flush();</span>
+<span class="nc" id="L129">          break;</span>
+        case DIRECT_MESSAGE:
+<span class="nc bnc" id="L131" title="All 2 branches missed.">          if (isDisconnected()) {</span>
+<span class="nc" id="L132">            System.out.println(&quot;You must first connect with a valid username.&quot;);</span>
+<span class="nc" id="L133">            break;</span>
+          }
+<span class="nc" id="L135">          username = chatClient.getUsername();</span>
+<span class="nc" id="L136">          tokens = input.split(&quot; &quot;, 3);</span>
+<span class="nc" id="L137">          recipient = tokens[1];</span>
+<span class="nc" id="L138">          message = tokens[2];</span>
+<span class="nc" id="L139">          outputStream.writeInt(25);</span>
+<span class="nc" id="L140">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L141">          outputStream.writeInt(username.getBytes().length);</span>
+<span class="nc" id="L142">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L143">          outputStream.writeBytes(username);</span>
+<span class="nc" id="L144">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L145">          outputStream.writeInt(recipient.getBytes().length);</span>
+<span class="nc" id="L146">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L147">          outputStream.writeBytes(recipient);</span>
+<span class="nc" id="L148">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L149">          outputStream.writeInt(message.getBytes().length);</span>
+<span class="nc" id="L150">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L151">          outputStream.writeBytes(message);</span>
+<span class="nc" id="L152">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L153">          outputStream.flush();</span>
+<span class="nc" id="L154">          break;</span>
+        case BROADCAST_MESSAGE:
+<span class="nc bnc" id="L156" title="All 2 branches missed.">          if (isDisconnected()) {</span>
+<span class="nc" id="L157">            System.out.println(&quot;You must first connect with a valid username.&quot;);</span>
+<span class="nc" id="L158">            break;</span>
+          }
+<span class="nc" id="L160">          username = chatClient.getUsername();</span>
+<span class="nc" id="L161">          tokens = input.split(&quot; &quot;, 2);</span>
+<span class="nc" id="L162">          message = tokens[1];</span>
+<span class="nc" id="L163">          recipient = &quot;everyone&quot;;</span>
+<span class="nc" id="L164">          outputStream.writeInt(24);</span>
+<span class="nc" id="L165">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L166">          outputStream.writeInt(username.getBytes().length);</span>
+<span class="nc" id="L167">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L168">          outputStream.writeBytes(username);</span>
+<span class="nc" id="L169">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L170">          outputStream.writeInt(recipient.getBytes().length);</span>
+<span class="nc" id="L171">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L172">          outputStream.writeBytes(recipient);</span>
+<span class="nc" id="L173">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L174">          outputStream.writeInt(message.getBytes().length);</span>
+<span class="nc" id="L175">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L176">          outputStream.writeBytes(message);</span>
+<span class="nc" id="L177">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L178">          outputStream.flush();</span>
+<span class="nc" id="L179">          break;</span>
+        case SEND_INSULT:
+<span class="nc bnc" id="L181" title="All 2 branches missed.">          if (isDisconnected()) {</span>
+<span class="nc" id="L182">            System.out.println(&quot;You must first connect with a valid username.&quot;);</span>
+<span class="nc" id="L183">            break;</span>
+          }
+<span class="nc" id="L185">          username = chatClient.getUsername();</span>
+<span class="nc" id="L186">          tokens = input.split(&quot; &quot;, 2);</span>
+<span class="nc" id="L187">          recipient = tokens[1];</span>
+<span class="nc" id="L188">          outputStream.writeInt(27);</span>
+<span class="nc" id="L189">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L190">          outputStream.writeInt(username.getBytes().length);</span>
+<span class="nc" id="L191">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L192">          outputStream.writeBytes(username);</span>
+<span class="nc" id="L193">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L194">          outputStream.writeInt(recipient.getBytes().length);</span>
+<span class="nc" id="L195">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L196">          outputStream.writeBytes(recipient);</span>
+<span class="nc" id="L197">          outputStream.writeChar(' ');</span>
+<span class="nc" id="L198">          outputStream.flush();</span>
+<span class="nc" id="L199">          break;</span>
+        case HELP:
+<span class="nc" id="L201">          chatClient.printOptions();</span>
+<span class="nc" id="L202">          break;</span>
+        default:
+<span class="nc" id="L204">          throw new IllegalStateException(&quot;Unexpected value: &quot; + tokens[0]);</span>
+      }
+    }
+<span class="nc" id="L207">  }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Luthien.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment2-refactoring</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Luthien.java</span></div><h1>Luthien.java</h1><pre class="source lang-java linenums">import java.util.Arrays;
+import java.util.List;
+
+/**
+ * This class extends the Cabinet class and represents a Luthien cabinet that sets a number
+ * of details--size, color options, and maximum number of shelves.
+ */
+public class Luthien extends Cabinet {
+<span class="fc" id="L9">	private final List&lt;String&gt; COLOR_OPTIONS = Arrays.asList(&quot;Black&quot;, &quot;Bone&quot;);</span>
+<span class="fc" id="L10">	private final int MAX_SHELF_NUM_HALF = 3;</span>
+<span class="fc" id="L11">	private final int MAX_SHELF_NUM_QUARTER = 1;</span>
+<span class="fc" id="L12">	private final int MAX_DRAWER_NUM = 1;</span>
+<span class="fc" id="L13">	private final int LUTHIEN_DEPTH = 18;</span>
+	private List&lt;String&gt; colors;
+	private int depth;
+	private int maxShelfNum;
+	private int maxDrawerNum;
+
+	/**
+	 * Constructs a new Luthien cabinet given the desired size.
+	 * @param size the desired size of the cabinet
+	 */
+	public Luthien(String size) {
+<span class="fc" id="L24">		super(size);</span>
+<span class="fc" id="L25">		this.colors = COLOR_OPTIONS;</span>
+<span class="fc" id="L26">		this.depth = LUTHIEN_DEPTH;</span>
+<span class="fc" id="L27">		setMaxShelfNum(size);</span>
+<span class="fc" id="L28">		setMaxDrawerNum(size);</span>
+<span class="fc" id="L29">	}</span>
+
+	/**
+	 * Sets the maximum shelves given the size of the cabinet.
+	 * @param size the size of the cabinet
+	 */
+	public void setMaxShelfNum(String size) {
+<span class="fc bfc" id="L36" title="All 2 branches covered.">		if (size.equals(&quot;half&quot;)) {</span>
+<span class="fc" id="L37">			this.maxShelfNum = MAX_SHELF_NUM_HALF;</span>
+		} else {
+<span class="fc" id="L39">			this.maxShelfNum = MAX_SHELF_NUM_QUARTER;</span>
+		}
+<span class="fc" id="L41">	}</span>
+
+	/**
+	 * Returns the maximum number of shelves the cabinet can hold.
+	 * @return the maximum number of shelves
+	 */
+	public int getMaxShelfNum() {
+<span class="fc" id="L48">		return this.maxShelfNum;</span>
+	}
+
+	/**
+	 * Sets the maximum drawer given the size of the cabinet.
+	 * @param size the size of the cabinet
+	 */
+	public void setMaxDrawerNum(String size) {
+<span class="fc" id="L56">		this.maxDrawerNum = MAX_DRAWER_NUM;</span>
+<span class="fc" id="L57">	}</span>
+
+	/**
+	 * Returns the maximum number of drawers the cabinet can hold.
+	 * @return the maximum number of drawers
+	 */
+	public int getMaxDrawerNum() {
+<span class="fc" id="L64">		return this.maxDrawerNum;</span>
+	}
+
+	/**
+	 * Returns the available color options.
+	 * @return the available color options
+	 */
+	public List&lt;String&gt; getColors() {
+<span class="fc" id="L72">		return this.colors;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

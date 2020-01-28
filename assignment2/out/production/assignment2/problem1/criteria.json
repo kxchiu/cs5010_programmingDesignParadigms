@@ -1,0 +1,13 @@
+[
+    {
+         "criteria": {
+            "width": "72",
+            "height": "72",
+            "shelves": "3",
+            "drawers":"0",
+            "color":"Oxblood",
+            "floorOrWall":"floor",
+            "budgetPriority":"no"
+        }
+    }
+]

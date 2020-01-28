@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Section.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment4</a> &gt; <a href="index.source.html" class="el_package">assignment4</a> &gt; <span class="el_source">Section.java</span></div><h1>Section.java</h1><pre class="source lang-java linenums">package assignment4;
+
+import java.util.Objects;
+
+/**
+ * This class represents a section of the venue, with given number of rows and columns.
+ */
+public class Section {
+	private int sectionNum;
+	private int row;
+	private int col;
+	private int numRegSeatAvail;
+	private int numWheelchairSeatAvail;
+
+	/**
+	 * Constructs a new section with given section number, number of rows and columns.
+	 * @param sectionNum the section number
+	 * @param row the number of rows
+	 * @param col the number of columns
+	 */
+<span class="fc" id="L21">	public Section(int sectionNum, int row, int col) {</span>
+<span class="fc" id="L22">		this.sectionNum = sectionNum;</span>
+<span class="fc" id="L23">		this.row = row;</span>
+<span class="fc" id="L24">		this.col = col;</span>
+<span class="fc" id="L25">		this.numRegSeatAvail = calculateNumRegSeat(row, col);</span>
+<span class="fc" id="L26">		this.numWheelchairSeatAvail = col;</span>
+<span class="fc" id="L27">	}</span>
+
+	/**
+	 * Returns the initial number of regular seats.
+	 * @param row the number of rows
+	 * @param col the number of columns
+	 * @return the initial number of regular seats
+	 */
+	private int calculateNumRegSeat(int row, int col) {
+<span class="fc" id="L36">		return (row - 1) * col;</span>
+	}
+
+	/**
+	 * Returns the section number.
+	 * @return the section number
+	 */
+	public int getSectionNum() {
+<span class="fc" id="L44">		return this.sectionNum;</span>
+	}
+
+	/**
+	 * Returns the number of regular seats available in the section.
+	 * @return the number of regular seats
+	 */
+	public int getNumRegSeat() {
+<span class="fc" id="L52">		return this.numRegSeatAvail;</span>
+	}
+
+	/**
+	 * Returns the number of wheelchair seats available in the section.
+	 * @return the number of wheelchair seats
+	 */
+	public int getNumWheelchairSeat() {
+<span class="fc" id="L60">		return this.numWheelchairSeatAvail;</span>
+	}
+
+	/**
+	 * Updates the number of regular seats available in the section.
+	 * @param update the number of regular seats to be updated
+	 */
+	public void updateNumRegSeat(int update) {
+<span class="fc" id="L68">		this.numRegSeatAvail += update;</span>
+<span class="fc" id="L69">	}</span>
+
+	/**
+	 * Updates the number of regular seats available in the section.
+	 * @param update the number of regular seats to be updated
+	 */
+	public void updateNumWheelchairSeat(int update) {
+<span class="fc" id="L76">		this.numWheelchairSeatAvail += update;</span>
+<span class="fc" id="L77">	}</span>
+
+	/**
+	 * Compares an object to the section and returns result as Boolean.
+	 * @param o the passed-in object
+	 * @return the comparison result
+	 */
+	@Override
+	public boolean equals(Object o) {
+<span class="pc bpc" id="L86" title="1 of 2 branches missed.">		if (this == o) {</span>
+<span class="nc" id="L87">			return true;</span>
+		}
+<span class="pc bpc" id="L89" title="2 of 4 branches missed.">		if (o == null || getClass() != o.getClass()) {</span>
+<span class="nc" id="L90">			return false;</span>
+		}
+<span class="fc" id="L92">		Section section = (Section) o;</span>
+<span class="pc bpc" id="L93" title="5 of 10 branches missed.">		return sectionNum == section.sectionNum &amp;&amp;</span>
+				row == section.row &amp;&amp;
+				col == section.col &amp;&amp;
+				numRegSeatAvail == section.numRegSeatAvail &amp;&amp;
+				numWheelchairSeatAvail == section.numWheelchairSeatAvail;
+	}
+
+	/**
+	 * Returns a hashcode of the section.
+	 * @return a hashcode of the section
+	 */
+	@Override
+	public int hashCode() {
+<span class="fc" id="L106">		return Objects.hash(sectionNum, row, col, numRegSeatAvail, numWheelchairSeatAvail);</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

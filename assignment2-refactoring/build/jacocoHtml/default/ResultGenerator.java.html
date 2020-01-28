@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ResultGenerator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment2-refactoring</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">ResultGenerator.java</span></div><h1>ResultGenerator.java</h1><pre class="source lang-java linenums">import java.io.FileWriter;
+import java.io.IOException;
+import org.json.simple.JSONObject;
+
+/**
+ * This class represents a result generator that reads from the given user criteria requirements
+ * and writes to a recommendation JSON file.
+ */
+public class ResultGenerator {
+<span class="fc" id="L10">	private final int STANDARD_WIDTH = 36;</span>
+<span class="fc" id="L11">	private final String[] CABINET = {&quot;Yossaria&quot;, &quot;Luthien&quot;, &quot;Atreides&quot;};</span>
+<span class="fc" id="L12">	private final String[] DOOR = {&quot;Slothrop&quot;, &quot;Belacqua&quot;, &quot;Gaga&quot;};</span>
+<span class="fc" id="L13">	private final int MIN_FEET_PER_CABINET = 4;</span>
+<span class="fc" id="L14">	private final int MIN_CABINET_TO_COMBINE = 3;</span>
+	private JSONObject recommendation;
+	private int numCabinet;
+	private int requiredWidth;
+	private String requiredHeight;
+	private int requiredShelf;
+	private int requiredDrawer;
+	private String colorPreference;
+	private String floorOrWall;
+	private boolean budgetPriority;
+
+	/**
+	 * Constructs a new result generator given the requirement details.
+	 * @param requiredWidth the required width
+	 * @param requiredHeight the required height
+	 * @param requiredShelf the required number of shelves
+	 * @param requiredDrawer the required number of drawers
+	 * @param colorPreference the color preference
+	 * @param floorOrWall the floor or wall mount option
+	 * @param budgetPriority the budget priority
+	 */
+	public ResultGenerator(int requiredWidth, String requiredHeight, int requiredShelf,
+<span class="fc" id="L36">			int requiredDrawer, String colorPreference, String floorOrWall, boolean budgetPriority) {</span>
+<span class="fc" id="L37">		this.requiredWidth = requiredWidth;</span>
+<span class="fc" id="L38">		this.requiredHeight = requiredHeight;</span>
+<span class="fc" id="L39">		this.requiredShelf = requiredShelf;</span>
+<span class="fc" id="L40">		this.requiredDrawer = requiredDrawer;</span>
+<span class="fc" id="L41">		this.colorPreference = colorPreference;</span>
+<span class="fc" id="L42">		this.floorOrWall = floorOrWall;</span>
+<span class="fc" id="L43">		this.budgetPriority = budgetPriority;</span>
+<span class="fc" id="L44">		this.recommendation = new JSONObject();</span>
+<span class="fc" id="L45">	}</span>
+
+	/**
+	 * Computes the various calculation and write to the recommendation list.
+	 * @param requiredWidth the desired width of the cabinet
+	 * @param requiredHeight the desired height/size of the cabinet
+	 * @param requiredShelf the desired number of shelves
+	 * @param requiredDrawer the desired number of drawers
+	 * @param colorPreference the preferred color
+	 * @param floorOrWall the desired mount option
+	 * @param budgetPriority the budget priority
+	 */
+	public void calculates(int requiredWidth, String requiredHeight, int requiredShelf,
+			int requiredDrawer, String colorPreference, String floorOrWall, boolean budgetPriority) {
+<span class="fc" id="L59">		numCabinet = getNumCabinet(requiredWidth);</span>
+
+		// Creates the cabinet and door objects
+<span class="fc" id="L62">		Yossaria yossaria = new Yossaria(requiredHeight);</span>
+<span class="fc" id="L63">		Luthien luthien = new Luthien(requiredHeight);</span>
+<span class="fc" id="L64">		Atreides atreides = new Atreides(requiredHeight);</span>
+<span class="fc" id="L65">		Slothrop slothrop = new Slothrop(requiredHeight);</span>
+<span class="fc" id="L66">		Belacqua belacqua = new Belacqua(requiredHeight);</span>
+<span class="fc" id="L67">		Gaga gaga = new Gaga(requiredHeight);</span>
+
+		// Calculates details
+<span class="fc" id="L70">		calculateCabinet(this.recommendation, numCabinet, yossaria, luthien, atreides);</span>
+<span class="fc" id="L71">		calculateDoor(this.recommendation, numCabinet, slothrop, belacqua, gaga);</span>
+<span class="fc" id="L72">		calculateFeet(this.recommendation, numCabinet, requiredHeight);</span>
+<span class="fc" id="L73">		calculateDrawer(this.recommendation, numCabinet);</span>
+<span class="fc" id="L74">		calculateDoorParts(this.recommendation, numCabinet);</span>
+<span class="fc" id="L75">		calculateWallFixture(this.recommendation, numCabinet, requiredHeight);</span>
+<span class="fc" id="L76">	}</span>
+
+	/**
+	 * Writes the recommendation to a JSON file.
+	 */
+	public void generateResult() {
+		// Output result to a JSON file
+<span class="nc" id="L83">		System.out.println(&quot;\nJSON Object: &quot; + recommendation);</span>
+<span class="nc" id="L84">		try (FileWriter file = new FileWriter(&quot;\\recommendation.json&quot;)) {</span>
+<span class="nc" id="L85">			file.write(recommendation.toJSONString());</span>
+<span class="nc" id="L86">		} catch (IOException e) {</span>
+<span class="nc" id="L87">			e.printStackTrace();</span>
+<span class="nc" id="L88">		}</span>
+<span class="nc" id="L89">	}</span>
+
+	/**
+	 * Returns the number of cabinets needed.
+	 * @param requiredWidth the desired width of the cabinet
+	 * @return the number of cabinets needed
+	 */
+	private int getNumCabinet(int requiredWidth) {
+<span class="fc" id="L97">		return requiredWidth / STANDARD_WIDTH;</span>
+	}
+
+	/**
+	 * Helper method to find the recommended cabinet.
+	 * @param recommendation the recommendation
+	 * @param givenNumCabinet the given number of required cabinets
+	 * @param yossaria the Yossaria cabinet
+	 * @param luthien the Luthien cabinet
+	 * @param atreides the Atreides cabinet
+	 */
+	private void calculateCabinet(JSONObject recommendation, int givenNumCabinet,
+			Yossaria yossaria, Luthien luthien, Atreides atreides) {
+<span class="pc bpc" id="L110" title="1 of 2 branches missed.">		if (requiredHeight.equals(&quot;wardrobe&quot;)) {</span>
+<span class="fc" id="L111">			this.recommendation.put(CABINET[0], givenNumCabinet);</span>
+<span class="nc bnc" id="L112" title="All 2 branches missed.">		} else if (checkDrawerMatch()) {</span>
+<span class="nc" id="L113">			this.recommendation.put(CABINET[1], givenNumCabinet);</span>
+		} else {
+<span class="nc bnc" id="L115" title="All 2 branches missed.">			if (checkShelfMatch(atreides, givenNumCabinet)) {</span>
+<span class="nc" id="L116">				this.recommendation.put(CABINET[2], givenNumCabinet);</span>
+			} else {
+				// Update required number of cabinet to meet desired number of shelves
+<span class="nc" id="L119">				numCabinet = requiredShelf / atreides.getMaxShelfNum();</span>
+<span class="nc" id="L120">				this.recommendation.put(CABINET[2], numCabinet);</span>
+			}
+		}
+<span class="fc" id="L123">	}</span>
+
+	/**
+	 * Helper method to find the type and number of doors.
+	 * @param recommendation the recommendation list
+	 * @param numCabinet the need number of cabinets
+	 * @param slothrop the Slothrop door
+	 * @param belaqua the Belaqua door
+	 * @param gaga the Gaga door
+	 */
+	private void calculateDoor(JSONObject recommendation, int numCabinet,
+			Slothrop slothrop, Belacqua belaqua, Gaga gaga) {
+<span class="pc bpc" id="L135" title="1 of 2 branches missed.">		if (requiredHeight.equals(&quot;wardrobe&quot;)) {</span>
+<span class="fc" id="L136">			findColorOption(recommendation, slothrop, colorPreference);</span>
+		} else {
+<span class="nc bnc" id="L138" title="All 2 branches missed.">			if (!budgetPriority) {</span>
+<span class="nc" id="L139">				recommendation.put(DOOR[2], numCabinet);</span>
+			}
+		}
+<span class="fc" id="L142">	}</span>
+
+	/**
+	 * Helper method to find the number of feets needed.
+	 * @param recommendation the recommendation list
+	 * @param numCabinet the need number of cabinets
+	 * @param requiredHeight the desired height/size of the cabinet
+	 */
+	private void calculateFeet(JSONObject recommendation, int numCabinet,
+			String requiredHeight) {
+<span class="fc" id="L152">		int totalFeet = numCabinet * MIN_FEET_PER_CABINET;</span>
+<span class="pc bpc" id="L153" title="2 of 4 branches missed.">		if (recommendation.containsKey(CABINET[0]) &amp;&amp; requiredHeight.equals(&quot;wardrobe&quot;)) {</span>
+<span class="fc" id="L154">			totalFeet = 0;</span>
+<span class="nc bnc" id="L155" title="All 2 branches missed.">		} else if (numCabinet / MIN_CABINET_TO_COMBINE &gt;= 1) {</span>
+<span class="nc" id="L156">			totalFeet -= (numCabinet / MIN_FEET_PER_CABINET) * 2;</span>
+		}
+<span class="fc" id="L158">		recommendation.put(&quot;Feet&quot;, totalFeet);</span>
+<span class="fc" id="L159">	}</span>
+
+	/**
+	 * Helper method to find the number of drawers needed.
+	 * @param recommendation the recommendation list
+	 * @param numCabinet the needed number of cabinets
+	 */
+	private void calculateDrawer(JSONObject recommendation, int numCabinet) {
+<span class="pc bpc" id="L167" title="1 of 2 branches missed.">		if (recommendation.containsKey(CABINET[1])) {</span>
+<span class="nc" id="L168">			recommendation.put(&quot;18 in. Drawer&quot;, numCabinet);</span>
+		} else {
+<span class="fc" id="L170">			recommendation.put(&quot;18 in. Drawer&quot;, 0);</span>
+		}
+<span class="fc" id="L172">	}</span>
+
+	/**
+	 * Helper method to find the number of other door parts needed.
+	 * @param recommendation the recommendation list
+	 * @param numCabinet the needed number of cabinets
+	 */
+	private void calculateDoorParts(JSONObject recommendation, int numCabinet) {
+<span class="pc bpc" id="L180" title="1 of 2 branches missed.">		if (recommendation.containsKey(CABINET[2])) {</span>
+<span class="nc" id="L181">			recommendation.put(&quot;Door Handle&quot;, numCabinet);</span>
+		} else {
+<span class="fc" id="L183">			recommendation.put(&quot;Door Handle&quot;, 0);</span>
+		}
+<span class="fc" id="L185">		recommendation.put(&quot;Door Hinge&quot;, numCabinet * 2);</span>
+<span class="fc" id="L186">	}</span>
+
+	/**
+	 * Helper method to find the number of wall fixture needed.
+	 * @param recommendation the recommendation list
+	 * @param numCabinet the need number of cabinets
+	 * @param requiredHeight the desired height/size of the cabinet
+	 */
+	private void calculateWallFixture(JSONObject recommendation, int numCabinet,
+			String requiredHeight) {
+<span class="pc bpc" id="L196" title="2 of 4 branches missed.">		if (recommendation.containsKey(CABINET[0]) &amp;&amp; requiredHeight.equals(&quot;wardrobe&quot;)) {</span>
+<span class="fc" id="L197">			recommendation.put(&quot;Wall Fixture&quot;, numCabinet);</span>
+		} else {
+<span class="nc" id="L199">			recommendation.put(&quot;Wall Fixture&quot;, 0);</span>
+		}
+<span class="fc" id="L201">	}</span>
+
+	/**
+	 * Checks if the desired number of drawer is more than zero.
+	 * @return if the desired number of drawer is more than zero
+	 */
+	private boolean checkDrawerMatch() {
+<span class="nc bnc" id="L208" title="All 2 branches missed.">		return requiredDrawer &gt; 0;</span>
+	}
+
+	/**
+	 * Checks if the recommended number of cabinets can match the desired number of shelves.
+	 * @param cabinet the recommended cabinet
+	 * @param numCabinet the needed number of cabinets
+	 * @return if the recommended cabinet can meet the desired number of shelves
+	 */
+	private boolean checkShelfMatch(Cabinet cabinet, int numCabinet) {
+<span class="nc bnc" id="L218" title="All 2 branches missed.">		return cabinet.getMaxShelfNum() * numCabinet &gt;= requiredShelf;</span>
+	}
+
+	/**
+	 * Finds the color option of the door.
+	 * @param recommendation the recommendation list
+	 * @param door the door product
+	 * @param colorPreference the preferred color
+	 */
+	private void findColorOption(JSONObject recommendation, Door door,
+			String colorPreference) {
+<span class="pc bpc" id="L229" title="1 of 2 branches missed.">		if (checkColorMatch(door, colorPreference)) {</span>
+<span class="nc" id="L230">			recommendation.put(DOOR[0], numCabinet);</span>
+		} else {
+<span class="fc" id="L232">			recommendation.put(DOOR[1], numCabinet);</span>
+		}
+<span class="fc" id="L234">	}</span>
+
+	/**
+	 * Returns if the door match the user's preferred color.
+	 * @param door the door product
+	 * @param colorPreference the preferred color
+	 * @return if the door match the user's preferred color
+	 */
+	private boolean checkColorMatch(Door door, String colorPreference) {
+<span class="fc" id="L243">		return door.getColors().contains(colorPreference);</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

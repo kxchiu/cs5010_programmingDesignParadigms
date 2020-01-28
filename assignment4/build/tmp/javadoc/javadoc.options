@@ -1,0 +1,12 @@
+-classpath 'C:\\Users\\Kevin\\WorkSpace\\CS5010\\Student_repo_Chen_wei_Chiu\\assignment4\\build\\classes\\java\\main;C:\\Users\\Kevin\\WorkSpace\\CS5010\\Student_repo_Chen_wei_Chiu\\assignment4\\build\\resources\\main;C:\\Users\\Kevin\\.gradle\\caches\\modules-2\\files-2.1\\com.googlecode.json-simple\\json-simple\\1.1.1\\c9ad4a0850ab676c5c64461a05ca524cdfff59f1\\json-simple-1.1.1.jar;C:\\Users\\Kevin\\.gradle\\caches\\modules-2\\files-2.1\\junit\\junit\\4.10\\e4f1766ce7404a08f45d859fb9c226fc9e41a861\\junit-4.10.jar;C:\\Users\\Kevin\\.gradle\\caches\\modules-2\\files-2.1\\org.hamcrest\\hamcrest-core\\1.1\\860340562250678d1a344907ac75754e259cdb14\\hamcrest-core-1.1.jar'
+-d 'C:\\Users\\Kevin\\WorkSpace\\CS5010\\Student_repo_Chen_wei_Chiu\\assignment4\\build\\docs\\javadoc'
+-doctitle 'assignment4 1.0-SNAPSHOT API'
+-quiet 
+-windowtitle 'assignment4 1.0-SNAPSHOT API'
+'C:\\Users\\Kevin\\WorkSpace\\CS5010\\Student_repo_Chen_wei_Chiu\\assignment4\\src\\main\\java\\assignment4\\Arranger.java'
+'C:\\Users\\Kevin\\WorkSpace\\CS5010\\Student_repo_Chen_wei_Chiu\\assignment4\\src\\main\\java\\assignment4\\GroupLeader.java'
+'C:\\Users\\Kevin\\WorkSpace\\CS5010\\Student_repo_Chen_wei_Chiu\\assignment4\\src\\main\\java\\assignment4\\RequestProcessor.java'
+'C:\\Users\\Kevin\\WorkSpace\\CS5010\\Student_repo_Chen_wei_Chiu\\assignment4\\src\\main\\java\\assignment4\\ReservationFailException.java'
+'C:\\Users\\Kevin\\WorkSpace\\CS5010\\Student_repo_Chen_wei_Chiu\\assignment4\\src\\main\\java\\assignment4\\Section.java'
+'C:\\Users\\Kevin\\WorkSpace\\CS5010\\Student_repo_Chen_wei_Chiu\\assignment4\\src\\main\\java\\assignment4\\VariableNames.java'
+'C:\\Users\\Kevin\\WorkSpace\\CS5010\\Student_repo_Chen_wei_Chiu\\assignment4\\src\\main\\java\\assignment4\\Venue.java'

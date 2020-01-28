@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="YossariaTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-10-15T03:02:36" hostname="DESKTOP-PTI2NAV" time="0.01">
+  <properties/>
+  <testcase name="setMaxShelfNum" classname="YossariaTest" time="0.002"/>
+  <testcase name="setColors" classname="YossariaTest" time="0.003"/>
+  <testcase name="getColors" classname="YossariaTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

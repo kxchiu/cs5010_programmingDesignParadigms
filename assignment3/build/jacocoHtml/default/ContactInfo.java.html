@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ContactInfo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment3</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">ContactInfo.java</span></div><h1>ContactInfo.java</h1><pre class="source lang-java linenums">import java.util.Objects;
+
+/**
+ * This class represents the contact information record for the Person object given the details--
+ * phone number 1 and 2, email, and website.
+ */
+public class ContactInfo {
+	private String phone1;
+	private String phone2;
+	private String email;
+	private String website;
+
+	/**
+	 * Constructs a new contact information with given details--phone numbers, email, and website.
+	 * @param phone1 the given phone number 1
+	 * @param phone2 the given phone number 2
+	 * @param email the given email address
+	 * @param website the given website
+	 */
+<span class="fc" id="L20">	public ContactInfo(String phone1, String phone2, String email, String website) {</span>
+<span class="fc" id="L21">		this.phone1 = phone1;</span>
+<span class="fc" id="L22">		this.phone2 = phone2;</span>
+<span class="fc" id="L23">		this.email = email;</span>
+<span class="fc" id="L24">		this.website = website;</span>
+<span class="fc" id="L25">	}</span>
+
+	/**
+	 * Returns the phone number 1 as String.
+	 * @return the phone number 1
+	 */
+	public String getPhone1() {
+<span class="nc" id="L32">		return this.phone1;</span>
+	}
+
+	/**
+	 * Returns the phone number 2 as String.
+	 * @return the phone number 2
+	 */
+	public String getPhone2() {
+<span class="nc" id="L40">		return this.phone2;</span>
+	}
+
+	/**
+	 * Returns the email address as String.
+	 * @return the email address
+	 */
+	public String getEmail() {
+<span class="fc" id="L48">		return this.email;</span>
+	}
+
+	/**
+	 * Returns the website as String.
+	 * @return the website
+	 */
+	public String getWebsite() {
+<span class="nc" id="L56">		return this.website;</span>
+	}
+
+	/**
+	 * Returns the full contact information details as String.
+	 * @return the full contact information details
+	 */
+	public String toString() {
+		String str;
+<span class="nc" id="L65">		str = &quot;Phone: &quot; + getPhone1() + &quot;, &quot; + getPhone2() + &quot;\n&quot;</span>
+<span class="nc" id="L66">				+ &quot;Email: &quot; + getEmail() + &quot;\n&quot;</span>
+<span class="nc" id="L67">				+ &quot;Website: &quot; + getWebsite();</span>
+<span class="nc" id="L68">		return str;</span>
+	}
+
+	/**
+	 * Compares the contact details.
+	 * @param o the object being compared to
+	 * @return true/false from the comparison
+	 */
+	@Override
+	public boolean equals(Object o) {
+<span class="nc bnc" id="L78" title="All 2 branches missed.">		if (this == o) {</span>
+<span class="nc" id="L79">			return true;</span>
+		}
+<span class="nc bnc" id="L81" title="All 4 branches missed.">		if (o == null || getClass() != o.getClass()) {</span>
+<span class="nc" id="L82">			return false;</span>
+		}
+<span class="nc" id="L84">		ContactInfo contactInfo = (ContactInfo) o;</span>
+<span class="nc bnc" id="L85" title="All 2 branches missed.">		return Objects.equals(contactInfo.getPhone1(), this.getPhone1())</span>
+<span class="nc bnc" id="L86" title="All 2 branches missed.">				&amp;&amp; Objects.equals(contactInfo.getPhone2(), this.getPhone2())</span>
+<span class="nc bnc" id="L87" title="All 2 branches missed.">				&amp;&amp; Objects.equals(contactInfo.getEmail(), this.getEmail())</span>
+<span class="nc bnc" id="L88" title="All 2 branches missed.">				&amp;&amp; Objects.equals(contactInfo.getWebsite(), this.getWebsite());</span>
+	}
+
+	/**
+	 * Returns a hash code from the contact details.
+	 * @return a hashcode from the contact details
+	 */
+	@Override
+	public int hashCode() {
+<span class="nc" id="L97">		return Objects.hash(this.getPhone1(), this.getPhone2(), this.getEmail(), this.getWebsite());</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

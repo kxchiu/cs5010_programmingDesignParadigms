@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MessageGenerator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment3</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">MessageGenerator.java</span></div><h1>MessageGenerator.java</h1><pre class="source lang-java linenums">import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+
+/**
+ * This class represents a message generator that takes the email template and list of people and
+ * generate a list of messages (email or letter) upon requested.
+ */
+public class MessageGenerator {
+
+  /**
+   * Constructs a message generator that reads the persons details and template and generates a list
+   * of message files.
+   */
+<span class="nc" id="L19">  public MessageGenerator() {</span>
+<span class="nc" id="L20">  }</span>
+
+  /**
+   * Reads the template file and outputs message files with replaced information from persons'
+   * details.
+   * @param persons the given list of persons
+   * @param file the template file path
+   * @param outputDir the given output directory
+   * @throws IOException
+   */
+  public void generateMsg(List&lt;Person&gt; persons, Path file, Path outputDir) throws IOException {
+<span class="nc" id="L31">    Charset charset = StandardCharsets.UTF_8;</span>
+<span class="nc" id="L32">    String original = new String(Files.readAllBytes(file), charset);</span>
+<span class="nc bnc" id="L33" title="All 2 branches missed.">    for (Person person : persons) {</span>
+<span class="nc" id="L34">      String newFile = original;</span>
+<span class="nc" id="L35">      newFile = replaceWords(person, newFile);</span>
+      // Write file to a renamed path
+<span class="nc bnc" id="L37" title="All 2 branches missed.">      if (!Files.exists(outputDir)) {</span>
+<span class="nc" id="L38">        Files.createDirectory(outputDir);</span>
+      }
+<span class="nc" id="L40">      Files.write(Paths.get(outputDir + &quot;\\&quot; + person.toString() + &quot;.txt&quot;), newFile.getBytes(charset));</span>
+<span class="nc" id="L41">    }</span>
+<span class="nc" id="L42">  }</span>
+
+  /**
+   * Helper method to replace words in the file and returns file as a String.
+   * @param person the given person
+   * @param newFile the given file
+   * @return the file with replaced words
+   */
+  private String replaceWords(Person person, String newFile) {
+<span class="nc" id="L51">    return newFile.replaceAll(&quot;\\[\\[first_name]]&quot;, person.getFirstName())</span>
+<span class="nc" id="L52">        .replaceAll(&quot;\\[\\[last_name]]&quot;, person.getLastName())</span>
+<span class="nc" id="L53">        .replaceAll(&quot;\\[\\[company_name]]&quot;, person.getCompanyName())</span>
+<span class="nc" id="L54">        .replaceAll(&quot;\\[\\[address]]&quot;, person.getAddress())</span>
+<span class="nc" id="L55">        .replaceAll(&quot;\\[\\[city]]&quot;, person.getCity())</span>
+<span class="nc" id="L56">        .replaceAll(&quot;\\[\\[county]]&quot;, person.getCounty())</span>
+<span class="nc" id="L57">        .replaceAll(&quot;\\[\\[state]]&quot;, person.getState())</span>
+<span class="nc" id="L58">        .replaceAll(&quot;\\[\\[zip]]&quot;, String.valueOf(person.getZip()))</span>
+<span class="nc" id="L59">        .replaceAll(&quot;\\[\\[email]]&quot;, person.getEmail());</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

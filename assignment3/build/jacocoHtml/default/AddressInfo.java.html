@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AddressInfo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment3</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">AddressInfo.java</span></div><h1>AddressInfo.java</h1><pre class="source lang-java linenums">import java.util.Objects;
+
+/**
+ * This class represents an address information record for the Person object with given details--
+ * address, city, county, state, and zip code.
+ */
+public class AddressInfo {
+	private String companyName;
+	private String address;
+	private String city;
+	private String county;
+	private String state;
+	private String zip;
+
+	/**
+	 * Constructs a new address information with given details.
+	 * @param companyName the company name
+	 * @param address the physical address
+	 * @param city the city
+	 * @param county the county
+	 * @param state the state
+	 * @param zip the zip code
+	 */
+	public AddressInfo(String companyName, String address, String city,
+<span class="fc" id="L25">			String county, String state, String zip) {</span>
+<span class="fc" id="L26">		this.companyName = companyName;</span>
+<span class="fc" id="L27">		this.address = address;</span>
+<span class="fc" id="L28">		this.city = city;</span>
+<span class="fc" id="L29">		this.county = county;</span>
+<span class="fc" id="L30">		this.state = state;</span>
+<span class="fc" id="L31">		this.zip = zip;</span>
+<span class="fc" id="L32">	}</span>
+
+	/**
+	 * Returns the company name as String.
+	 * @return the company name
+	 */
+	public String getCompanyName() {
+<span class="fc" id="L39">		return this.companyName;</span>
+	}
+
+	/**
+	 * Returns the physical address as String.
+	 * @return the physical address
+	 */
+	public String getAddress() {
+<span class="fc" id="L47">		return this.address;</span>
+	}
+
+	/**
+	 * Returns the city as String.
+	 * @return the city
+	 */
+	public String getCity() {
+<span class="fc" id="L55">		return this.city;</span>
+	}
+
+	/**
+	 * Returns the county as String.
+	 * @return the county
+	 */
+	public String getCounty() {
+<span class="fc" id="L63">		return this.county;</span>
+	}
+
+	/**
+	 * Returns the state as String.
+	 * @return the state
+	 */
+	public String getState() {
+<span class="fc" id="L71">		return this.state;</span>
+	}
+
+	/**
+	 * Returns the ZIP code as String.
+	 * @return the ZIP code
+	 */
+	public String getZip() {
+<span class="fc" id="L79">		return this.zip;</span>
+	}
+
+	/**
+	 * Returns the full address information as String.
+	 * @return the full address information
+	 */
+	public String toString() {
+		String str;
+<span class="nc" id="L88">		str = getCompanyName() + &quot;\n&quot;</span>
+<span class="nc" id="L89">				+ getAddress() + &quot;\n&quot;</span>
+<span class="nc" id="L90">				+ getCity() + &quot;, &quot; + getState() + &quot; &quot; + getZip();</span>
+<span class="nc" id="L91">		return str;</span>
+	}
+
+	/**
+	 * Compares the address details.
+	 * @param o the object being compared to
+	 * @return true/false from the comparison
+	 */
+	@Override
+	public boolean equals(Object o) {
+<span class="nc bnc" id="L101" title="All 2 branches missed.">		if (this == o) {</span>
+<span class="nc" id="L102">			return true;</span>
+		}
+<span class="nc bnc" id="L104" title="All 4 branches missed.">		if (o == null || getClass() != o.getClass()) {</span>
+<span class="nc" id="L105">			return false;</span>
+		}
+<span class="nc" id="L107">		AddressInfo addressInfo = (AddressInfo) o;</span>
+<span class="nc bnc" id="L108" title="All 2 branches missed.">		return Objects.equals(addressInfo.getCompanyName(), this.getCompanyName())</span>
+<span class="nc bnc" id="L109" title="All 2 branches missed.">				&amp;&amp; Objects.equals(addressInfo.getAddress(), this.getAddress())</span>
+<span class="nc bnc" id="L110" title="All 2 branches missed.">				&amp;&amp; Objects.equals(addressInfo.getCity(), this.getCity())</span>
+<span class="nc bnc" id="L111" title="All 2 branches missed.">				&amp;&amp; Objects.equals(addressInfo.getCounty(), this.getCounty())</span>
+<span class="nc bnc" id="L112" title="All 2 branches missed.">				&amp;&amp; Objects.equals(addressInfo.getState(), this.getState())</span>
+<span class="nc bnc" id="L113" title="All 2 branches missed.">				&amp;&amp; Objects.equals(addressInfo.getZip(), this.getZip());</span>
+	}
+
+	/**
+	 * Returns a hash code from the address details.
+	 * @return a hashcode from the address details
+	 */
+	@Override
+	public int hashCode() {
+<span class="nc" id="L122">		return Objects.hash(this.getCompanyName(), this.getAddress(), this.getCity(), this.getCounty(),</span>
+<span class="nc" id="L123">		this.getState(), this.getZip());</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

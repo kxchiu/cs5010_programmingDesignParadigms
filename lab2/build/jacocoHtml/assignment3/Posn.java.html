@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Posn.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lab2</a> &gt; <a href="index.source.html" class="el_package">assignment3</a> &gt; <span class="el_source">Posn.java</span></div><h1>Posn.java</h1><pre class="source lang-java linenums">package assignment3;
+
+/**
+ * Represents a Cartesian coordinate.
+ *
+ */
+public class Posn {
+  private Integer x;
+  private Integer y;
+
+<span class="nc" id="L11">  public Posn(Integer x, Integer y) {</span>
+<span class="nc" id="L12">    this.x = x;</span>
+<span class="nc" id="L13">    this.y = y;</span>
+<span class="nc" id="L14">  }</span>
+  /**
+   * Getter for property 'x'.
+   *
+   * @return Value for property 'x'.
+   */
+  public Integer getX() {
+<span class="nc" id="L21">    return this.x;</span>
+  }
+  /**
+   * Getter for property 'y'.
+   *
+   * @return Value for property 'y'.
+   */
+  public Integer getY() {
+<span class="nc" id="L29">    return this.y;</span>
+  }
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public boolean equals(Object o) {
+<span class="nc bnc" id="L36" title="All 2 branches missed.">    if (this == o) return true;</span>
+<span class="nc bnc" id="L37" title="All 4 branches missed.">    if (o == null || getClass() != o.getClass()) return false;</span>
+<span class="nc" id="L38">    Posn posn = (Posn) o;</span>
+<span class="nc bnc" id="L39" title="All 6 branches missed.">    if (this.x != null ? !this.x.equals(posn.x) : posn.x != null)</span>
+<span class="nc" id="L40">      return false;</span>
+<span class="nc bnc" id="L41" title="All 4 branches missed.">    return this.y != null ? this.y.equals(posn.y) : posn.y == null;</span>
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public int hashCode() {
+<span class="nc bnc" id="L49" title="All 2 branches missed.">    int result = this.x != null ? this.x.hashCode() : 0;</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">    result = 31 * result + (this.y != null ? this.y.hashCode() :</span>
+        0);
+<span class="nc" id="L52">    return result;</span>
+  }
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public String toString() {
+<span class="nc" id="L59">    return &quot;Posn{&quot; +</span>
+        &quot;x=&quot; + x +
+        &quot;, y=&quot; + y +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

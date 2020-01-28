@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JSONToMap.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment8</a> &gt; <a href="index.source.html" class="el_package">assignment8</a> &gt; <span class="el_source">JSONToMap.java</span></div><h1>JSONToMap.java</h1><pre class="source lang-java linenums">package assignment8;
+
+import org.apache.commons.io.FileUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+<span class="nc" id="L12">public class JSONToMap {</span>
+
+  public static Map&lt;String, String[]&gt; parse(String file) throws IOException {
+<span class="nc" id="L15">    JSONObject root = new JSONObject(FileUtils.readFileToString(new File(file), &quot;utf-8&quot;));</span>
+<span class="nc" id="L16">    String[] keys = JSONObject.getNames(root);</span>
+<span class="nc" id="L17">    Map&lt;String, String[]&gt; data = new HashMap&lt;&gt;();</span>
+
+<span class="nc bnc" id="L19" title="All 2 branches missed.">    for (String key: keys) {</span>
+<span class="nc" id="L20">      Object value = root.get(key);</span>
+<span class="nc bnc" id="L21" title="All 2 branches missed.">      if (value instanceof String) {</span>
+<span class="nc" id="L22">        putDataWithLowercaseKey(data, key, new String[]{(String) value});</span>
+<span class="nc bnc" id="L23" title="All 2 branches missed.">      } else if (value instanceof JSONArray) {</span>
+<span class="nc" id="L24">        JSONArray jsonValues = (JSONArray) value;</span>
+<span class="nc" id="L25">        String[] values = new String[jsonValues.length()];</span>
+<span class="nc bnc" id="L26" title="All 2 branches missed.">        for (int i = 0; i &lt; values.length; i++) {</span>
+<span class="nc" id="L27">          values[i] = jsonValues.getString(i);</span>
+        }
+<span class="nc" id="L29">        putDataWithLowercaseKey(data, key, values);</span>
+      }
+    }
+<span class="nc" id="L32">    return data;</span>
+  }
+
+  private static void putDataWithLowercaseKey(Map&lt;String, String[]&gt; data, String key, String[] values) {
+<span class="nc" id="L36">    data.put(key.toLowerCase(), values);</span>
+<span class="nc" id="L37">  }</span>
+
+  @Override
+  public int hashCode() {
+<span class="nc" id="L41">    return super.hashCode();</span>
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+<span class="nc" id="L46">    return super.equals(obj);</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

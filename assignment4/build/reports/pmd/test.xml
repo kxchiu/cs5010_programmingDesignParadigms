@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd"
+    version="6.8.0" timestamp="2019-10-21T15:38:35.670">
+<file name="C:\Users\Kevin\WorkSpace\CS5010\Student_repo_Chen_wei_Chiu\assignment4\src\test\java\assignment4\GroupLeaderTest.java">
+<violation beginline="3" endline="3" begincolumn="1" endcolumn="33" rule="UnusedImports" ruleset="Best Practices" package="assignment4" class="GroupLeaderTest" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_bestpractices.html#unusedimports" priority="4">
+Avoid unused imports such as 'org.junit.Assert'
+</violation>
+<violation beginline="10" endline="42" begincolumn="8" endcolumn="1" rule="AtLeastOneConstructor" ruleset="Code Style" package="assignment4" class="GroupLeaderTest" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#atleastoneconstructor" priority="3">
+Each class should declare at least one constructor
+</violation>
+<violation beginline="11" endline="11" begincolumn="29" endcolumn="39" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="assignment4" class="GroupLeaderTest" variable="groupLeader" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="12" endline="12" begincolumn="24" endcolumn="27" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="assignment4" class="GroupLeaderTest" variable="name" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="21" endline="23" begincolumn="16" endcolumn="9" rule="LinguisticNaming" ruleset="Code Style" package="assignment4" class="GroupLeaderTest" method="getName" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The getter 'getName' should not return void linguistically
+</violation>
+<violation beginline="22" endline="22" begincolumn="17" endcolumn="35" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="assignment4" class="GroupLeaderTest" method="getName" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+<violation beginline="27" endline="27" begincolumn="17" endcolumn="62" rule="LocalVariableCouldBeFinal" ruleset="Code Style" package="assignment4" class="GroupLeaderTest" method="testEquals" variable="testLeader" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#localvariablecouldbefinal" priority="3">
+Local variable 'testLeader' could be declared final
+</violation>
+<violation beginline="28" endline="28" begincolumn="17" endcolumn="33" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="assignment4" class="GroupLeaderTest" method="testEquals" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertTrue' due to existing static import 'org.junit.Assert.*'
+</violation>
+<violation beginline="33" endline="33" begincolumn="17" endcolumn="45" rule="LocalVariableCouldBeFinal" ruleset="Code Style" package="assignment4" class="GroupLeaderTest" method="testHashCode" variable="hash" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#localvariablecouldbefinal" priority="3">
+Local variable 'hash' could be declared final
+</violation>
+<violation beginline="34" endline="34" begincolumn="17" endcolumn="35" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="assignment4" class="GroupLeaderTest" method="testHashCode" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+<violation beginline="39" endline="39" begincolumn="17" endcolumn="62" rule="LocalVariableCouldBeFinal" ruleset="Code Style" package="assignment4" class="GroupLeaderTest" method="testToString" variable="str" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#localvariablecouldbefinal" priority="3">
+Local variable 'str' could be declared final
+</violation>
+<violation beginline="40" endline="40" begincolumn="17" endcolumn="35" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="assignment4" class="GroupLeaderTest" method="testToString" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+</file>
+<file name="C:\Users\Kevin\WorkSpace\CS5010\Student_repo_Chen_wei_Chiu\assignment4\src\test\java\assignment4\RequestProcessorTest.java">
+<violation beginline="3" endline="3" begincolumn="1" endcolumn="33" rule="UnusedImports" ruleset="Best Practices" package="assignment4" class="RequestProcessorTest" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_bestpractices.html#unusedimports" priority="4">
+Avoid unused imports such as 'org.junit.Assert'
+</violation>
+<violation beginline="8" endline="8" begincolumn="1" endcolumn="33" rule="UnusedImports" ruleset="Best Practices" package="assignment4" class="RequestProcessorTest" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_bestpractices.html#unusedimports" priority="4">
+Avoid unused imports such as 'org.json.simple.JSONArray'
+</violation>
+<violation beginline="15" endline="75" begincolumn="8" endcolumn="1" rule="AtLeastOneConstructor" ruleset="Code Style" package="assignment4" class="RequestProcessorTest" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#atleastoneconstructor" priority="3">
+Each class should declare at least one constructor
+</violation>
+<violation beginline="16" endline="16" begincolumn="34" endcolumn="49" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="assignment4" class="RequestProcessorTest" variable="requestProcessor" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="17" endline="17" begincolumn="28" endcolumn="41" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="assignment4" class="RequestProcessorTest" variable="requestDetails" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="21" endline="21" begincolumn="57" endcolumn="70" rule="AvoidDuplicateLiterals" ruleset="Error Prone" package="assignment4" class="RequestProcessorTest" method="setUp" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_errorprone.html#avoidduplicateliterals" priority="3">
+The String literal &quot;request.json&quot; appears 5 times in this file; the first occurrence is on line 21
+</violation>
+<violation beginline="27" endline="27" begincolumn="17" endcolumn="56" rule="LocalVariableCouldBeFinal" ruleset="Code Style" package="assignment4" class="RequestProcessorTest" method="parseData" variable="jsonParser" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#localvariablecouldbefinal" priority="3">
+Local variable 'jsonParser' could be declared final
+</violation>
+<violation beginline="28" endline="33" begincolumn="25" endcolumn="50" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="assignment4" class="RequestProcessorTest" method="parseData" variable="request" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'request' (lines '28'-'33').
+</violation>
+<violation beginline="31" endline="31" begincolumn="25" endcolumn="61" rule="LocalVariableCouldBeFinal" ruleset="Code Style" package="assignment4" class="RequestProcessorTest" method="parseData" variable="obj" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#localvariablecouldbefinal" priority="3">
+Local variable 'obj' could be declared final
+</violation>
+<violation beginline="35" endline="35" begincolumn="25" endcolumn="43" rule="AvoidPrintStackTrace" ruleset="Best Practices" package="assignment4" class="RequestProcessorTest" method="parseData" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_bestpractices.html#avoidprintstacktrace" priority="3">
+Avoid printStackTrace(); use a logger call instead.
+</violation>
+<violation beginline="37" endline="37" begincolumn="17" endcolumn="35" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="assignment4" class="RequestProcessorTest" method="parseData" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+<violation beginline="41" endline="44" begincolumn="16" endcolumn="9" rule="LinguisticNaming" ruleset="Code Style" package="assignment4" class="RequestProcessorTest" method="getGroupName" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The getter 'getGroupName' should not return void linguistically
+</violation>
+<violation beginline="42" endline="42" begincolumn="17" endcolumn="92" rule="LocalVariableCouldBeFinal" ruleset="Code Style" package="assignment4" class="RequestProcessorTest" method="getGroupName" variable="groupName" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#localvariablecouldbefinal" priority="3">
+Local variable 'groupName' could be declared final
+</violation>
+<violation beginline="43" endline="43" begincolumn="17" endcolumn="35" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="assignment4" class="RequestProcessorTest" method="getGroupName" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+<violation beginline="47" endline="50" begincolumn="16" endcolumn="9" rule="LinguisticNaming" ruleset="Code Style" package="assignment4" class="RequestProcessorTest" method="getLeaderName" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The getter 'getLeaderName' should not return void linguistically
+</violation>
+<violation beginline="48" endline="48" begincolumn="17" endcolumn="94" rule="LocalVariableCouldBeFinal" ruleset="Code Style" package="assignment4" class="RequestProcessorTest" method="getLeaderName" variable="leaderName" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#localvariablecouldbefinal" priority="3">
+Local variable 'leaderName' could be declared final
+</violation>
+<violation beginline="49" endline="49" begincolumn="17" endcolumn="35" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="assignment4" class="RequestProcessorTest" method="getLeaderName" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+<violation beginline="53" endline="56" begincolumn="16" endcolumn="9" rule="LinguisticNaming" ruleset="Code Style" package="assignment4" class="RequestProcessorTest" method="getAttendee" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The getter 'getAttendee' should not return void linguistically
+</violation>
+<violation beginline="54" endline="54" begincolumn="17" endcolumn="30" rule="LocalVariableCouldBeFinal" ruleset="Code Style" package="assignment4" class="RequestProcessorTest" method="getAttendee" variable="numAtt" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#localvariablecouldbefinal" priority="3">
+Local variable 'numAtt' could be declared final
+</violation>
+<violation beginline="55" endline="55" begincolumn="17" endcolumn="35" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="assignment4" class="RequestProcessorTest" method="getAttendee" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+<violation beginline="59" endline="62" begincolumn="16" endcolumn="9" rule="LinguisticNaming" ruleset="Code Style" package="assignment4" class="RequestProcessorTest" method="getWheelchair" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The getter 'getWheelchair' should not return void linguistically
+</violation>
+<violation beginline="60" endline="60" begincolumn="17" endcolumn="109" rule="LocalVariableCouldBeFinal" ruleset="Code Style" package="assignment4" class="RequestProcessorTest" method="getWheelchair" variable="numWhe" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#localvariablecouldbefinal" priority="3">
+Local variable 'numWhe' could be declared final
+</violation>
+<violation beginline="61" endline="61" begincolumn="17" endcolumn="35" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="assignment4" class="RequestProcessorTest" method="getWheelchair" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+<violation beginline="66" endline="66" begincolumn="17" endcolumn="85" rule="LocalVariableCouldBeFinal" ruleset="Code Style" package="assignment4" class="RequestProcessorTest" method="testEquals" variable="testProcessor" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#localvariablecouldbefinal" priority="3">
+Local variable 'testProcessor' could be declared final
+</violation>
+<violation beginline="67" endline="67" begincolumn="17" endcolumn="33" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="assignment4" class="RequestProcessorTest" method="testEquals" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertTrue' due to existing static import 'org.junit.Assert.*'
+</violation>
+<violation beginline="72" endline="72" begincolumn="17" endcolumn="55" rule="LocalVariableCouldBeFinal" ruleset="Code Style" package="assignment4" class="RequestProcessorTest" method="testHashCode" variable="hash" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#localvariablecouldbefinal" priority="3">
+Local variable 'hash' could be declared final
+</violation>
+<violation beginline="73" endline="73" begincolumn="17" endcolumn="35" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="assignment4" class="RequestProcessorTest" method="testHashCode" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+</file>
+<file name="C:\Users\Kevin\WorkSpace\CS5010\Student_repo_Chen_wei_Chiu\assignment4\src\test\java\assignment4\ReservationFailExceptionTest.java">
+<violation beginline="3" endline="3" begincolumn="1" endcolumn="33" rule="UnusedImports" ruleset="Best Practices" package="assignment4" class="ReservationFailExceptionTest" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_bestpractices.html#unusedimports" priority="4">
+Avoid unused imports such as 'org.junit.Assert'
+</violation>
+<violation beginline="8" endline="20" begincolumn="8" endcolumn="1" rule="AtLeastOneConstructor" ruleset="Code Style" package="assignment4" class="ReservationFailExceptionTest" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#atleastoneconstructor" priority="3">
+Each class should declare at least one constructor
+</violation>
+<violation beginline="9" endline="9" begincolumn="42" endcolumn="65" rule="LongVariable" ruleset="Code Style" package="assignment4" class="ReservationFailExceptionTest" variable="reservationFailException" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#longvariable" priority="3">
+Avoid excessively long variable names like reservationFailException
+</violation>
+<violation beginline="9" endline="9" begincolumn="42" endcolumn="65" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="assignment4" class="ReservationFailExceptionTest" variable="reservationFailException" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+</file>
+<file name="C:\Users\Kevin\WorkSpace\CS5010\Student_repo_Chen_wei_Chiu\assignment4\src\test\java\assignment4\SectionTest.java">
+<violation beginline="3" endline="3" begincolumn="1" endcolumn="33" rule="UnusedImports" ruleset="Best Practices" package="assignment4" class="SectionTest" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_bestpractices.html#unusedimports" priority="4">
+Avoid unused imports such as 'org.junit.Assert'
+</violation>
+<violation beginline="10" endline="66" begincolumn="8" endcolumn="1" rule="AtLeastOneConstructor" ruleset="Code Style" package="assignment4" class="SectionTest" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#atleastoneconstructor" priority="3">
+Each class should declare at least one constructor
+</violation>
+<violation beginline="11" endline="11" begincolumn="25" endcolumn="31" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="assignment4" class="SectionTest" variable="section" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="12" endline="12" begincolumn="21" endcolumn="30" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="assignment4" class="SectionTest" variable="sectionNum" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="13" endline="13" begincolumn="21" endcolumn="23" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="assignment4" class="SectionTest" variable="row" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="14" endline="14" begincolumn="21" endcolumn="23" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="assignment4" class="SectionTest" variable="col" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="15" endline="15" begincolumn="21" endcolumn="35" rule="UnusedPrivateField" ruleset="Best Practices" package="assignment4" class="SectionTest" variable="numRegSeatAvail" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_bestpractices.html#unusedprivatefield" priority="3">
+Avoid unused private fields such as 'numRegSeatAvail'.
+</violation>
+<violation beginline="16" endline="16" begincolumn="21" endcolumn="42" rule="LongVariable" ruleset="Code Style" package="assignment4" class="SectionTest" variable="numWheelchairSeatAvail" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#longvariable" priority="3">
+Avoid excessively long variable names like numWheelchairSeatAvail
+</violation>
+<violation beginline="16" endline="16" begincolumn="21" endcolumn="42" rule="UnusedPrivateField" ruleset="Best Practices" package="assignment4" class="SectionTest" variable="numWheelchairSeatAvail" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_bestpractices.html#unusedprivatefield" priority="3">
+Avoid unused private fields such as 'numWheelchairSeatAvail'.
+</violation>
+<violation beginline="27" endline="29" begincolumn="16" endcolumn="9" rule="LinguisticNaming" ruleset="Code Style" package="assignment4" class="SectionTest" method="getSectionNum" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The getter 'getSectionNum' should not return void linguistically
+</violation>
+<violation beginline="28" endline="28" begincolumn="17" endcolumn="35" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="assignment4" class="SectionTest" method="getSectionNum" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+<violation beginline="32" endline="35" begincolumn="16" endcolumn="9" rule="LinguisticNaming" ruleset="Code Style" package="assignment4" class="SectionTest" method="getNumRegSeat" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The getter 'getNumRegSeat' should not return void linguistically
+</violation>
+<violation beginline="33" endline="33" begincolumn="17" endcolumn="45" rule="LocalVariableCouldBeFinal" ruleset="Code Style" package="assignment4" class="SectionTest" method="getNumRegSeat" variable="regSeat" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#localvariablecouldbefinal" priority="3">
+Local variable 'regSeat' could be declared final
+</violation>
+<violation beginline="34" endline="34" begincolumn="17" endcolumn="35" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="assignment4" class="SectionTest" method="getNumRegSeat" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+<violation beginline="38" endline="41" begincolumn="16" endcolumn="9" rule="LinguisticNaming" ruleset="Code Style" package="assignment4" class="SectionTest" method="getNumWheelchairSeat" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The getter 'getNumWheelchairSeat' should not return void linguistically
+</violation>
+<violation beginline="39" endline="39" begincolumn="17" endcolumn="40" rule="LocalVariableCouldBeFinal" ruleset="Code Style" package="assignment4" class="SectionTest" method="getNumWheelchairSeat" variable="wheelchairSeat" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#localvariablecouldbefinal" priority="3">
+Local variable 'wheelchairSeat' could be declared final
+</violation>
+<violation beginline="40" endline="40" begincolumn="17" endcolumn="35" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="assignment4" class="SectionTest" method="getNumWheelchairSeat" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+<violation beginline="46" endline="46" begincolumn="17" endcolumn="35" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="assignment4" class="SectionTest" method="updateNumRegSeat" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+<violation beginline="52" endline="52" begincolumn="17" endcolumn="35" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="assignment4" class="SectionTest" method="updateNumWheelchairSeat" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+<violation beginline="57" endline="57" begincolumn="17" endcolumn="71" rule="LocalVariableCouldBeFinal" ruleset="Code Style" package="assignment4" class="SectionTest" method="testEquals" variable="testSection" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#localvariablecouldbefinal" priority="3">
+Local variable 'testSection' could be declared final
+</violation>
+<violation beginline="58" endline="58" begincolumn="17" endcolumn="33" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="assignment4" class="SectionTest" method="testEquals" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertTrue' due to existing static import 'org.junit.Assert.*'
+</violation>
+<violation beginline="63" endline="63" begincolumn="17" endcolumn="69" rule="LocalVariableCouldBeFinal" ruleset="Code Style" package="assignment4" class="SectionTest" method="testHashCode" variable="hash" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#localvariablecouldbefinal" priority="3">
+Local variable 'hash' could be declared final
+</violation>
+<violation beginline="64" endline="64" begincolumn="17" endcolumn="35" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="assignment4" class="SectionTest" method="testHashCode" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+</file>
+<file name="C:\Users\Kevin\WorkSpace\CS5010\Student_repo_Chen_wei_Chiu\assignment4\src\test\java\assignment4\VenueTest.java">
+<violation beginline="3" endline="3" begincolumn="1" endcolumn="33" rule="UnusedImports" ruleset="Best Practices" package="assignment4" class="VenueTest" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_bestpractices.html#unusedimports" priority="4">
+Avoid unused imports such as 'org.junit.Assert'
+</violation>
+<violation beginline="14" endline="70" begincolumn="8" endcolumn="1" rule="AtLeastOneConstructor" ruleset="Code Style" package="assignment4" class="VenueTest" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#atleastoneconstructor" priority="3">
+Each class should declare at least one constructor
+</violation>
+<violation beginline="15" endline="15" begincolumn="23" endcolumn="27" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="assignment4" class="VenueTest" variable="venue" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="16" endline="16" begincolumn="21" endcolumn="31" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="assignment4" class="VenueTest" variable="numSections" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="17" endline="17" begincolumn="21" endcolumn="26" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="assignment4" class="VenueTest" variable="numRow" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="18" endline="18" begincolumn="21" endcolumn="26" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="assignment4" class="VenueTest" variable="numCol" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="19" endline="19" begincolumn="21" endcolumn="33" rule="UnusedPrivateField" ruleset="Best Practices" package="assignment4" class="VenueTest" variable="seatAvailable" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_bestpractices.html#unusedprivatefield" priority="3">
+Avoid unused private fields such as 'seatAvailable'.
+</violation>
+<violation beginline="20" endline="20" begincolumn="31" endcolumn="41" rule="UnusedPrivateField" ruleset="Best Practices" package="assignment4" class="VenueTest" variable="sectionList" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_bestpractices.html#unusedprivatefield" priority="3">
+Avoid unused private fields such as 'sectionList'.
+</violation>
+<violation beginline="21" endline="21" begincolumn="44" endcolumn="54" rule="UnusedPrivateField" ruleset="Best Practices" package="assignment4" class="VenueTest" variable="groupToSect" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_bestpractices.html#unusedprivatefield" priority="3">
+Avoid unused private fields such as 'groupToSect'.
+</violation>
+<violation beginline="22" endline="22" begincolumn="42" endcolumn="54" rule="UnusedPrivateField" ruleset="Best Practices" package="assignment4" class="VenueTest" variable="groupToLeader" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_bestpractices.html#unusedprivatefield" priority="3">
+Avoid unused private fields such as 'groupToLeader'.
+</violation>
+<violation beginline="33" endline="36" begincolumn="16" endcolumn="9" rule="LinguisticNaming" ruleset="Code Style" package="assignment4" class="VenueTest" method="getSeatAvailable" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The getter 'getSeatAvailable' should not return void linguistically
+</violation>
+<violation beginline="34" endline="34" begincolumn="17" endcolumn="62" rule="LocalVariableCouldBeFinal" ruleset="Code Style" package="assignment4" class="VenueTest" method="getSeatAvailable" variable="seatsAvail" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#localvariablecouldbefinal" priority="3">
+Local variable 'seatsAvail' could be declared final
+</violation>
+<violation beginline="35" endline="35" begincolumn="17" endcolumn="35" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="assignment4" class="VenueTest" method="getSeatAvailable" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+<violation beginline="39" endline="42" begincolumn="16" endcolumn="9" rule="LinguisticNaming" ruleset="Code Style" package="assignment4" class="VenueTest" method="getNormalSeatAvail" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The getter 'getNormalSeatAvail' should not return void linguistically
+</violation>
+<violation beginline="40" endline="40" begincolumn="17" endcolumn="68" rule="LocalVariableCouldBeFinal" ruleset="Code Style" package="assignment4" class="VenueTest" method="getNormalSeatAvail" variable="normalSeats" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#localvariablecouldbefinal" priority="3">
+Local variable 'normalSeats' could be declared final
+</violation>
+<violation beginline="41" endline="41" begincolumn="17" endcolumn="35" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="assignment4" class="VenueTest" method="getNormalSeatAvail" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+<violation beginline="45" endline="48" begincolumn="16" endcolumn="9" rule="LinguisticNaming" ruleset="Code Style" package="assignment4" class="VenueTest" method="getWheelchairSeatAvail" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The getter 'getWheelchairSeatAvail' should not return void linguistically
+</violation>
+<violation beginline="46" endline="46" begincolumn="17" endcolumn="58" rule="LocalVariableCouldBeFinal" ruleset="Code Style" package="assignment4" class="VenueTest" method="getWheelchairSeatAvail" variable="wheelchairSeats" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#localvariablecouldbefinal" priority="3">
+Local variable 'wheelchairSeats' could be declared final
+</violation>
+<violation beginline="47" endline="47" begincolumn="17" endcolumn="35" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="assignment4" class="VenueTest" method="getWheelchairSeatAvail" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+<violation beginline="51" endline="57" begincolumn="16" endcolumn="9" rule="LinguisticNaming" ruleset="Code Style" package="assignment4" class="VenueTest" method="getSectionList" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#linguisticnaming" priority="3">
+Linguistics Antipattern - The getter 'getSectionList' should not return void linguistically
+</violation>
+<violation beginline="52" endline="52" begincolumn="17" endcolumn="65" rule="LocalVariableCouldBeFinal" ruleset="Code Style" package="assignment4" class="VenueTest" method="getSectionList" variable="sections" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#localvariablecouldbefinal" priority="3">
+Local variable 'sections' could be declared final
+</violation>
+<violation beginline="56" endline="56" begincolumn="17" endcolumn="35" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="assignment4" class="VenueTest" method="getSectionList" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+<violation beginline="61" endline="61" begincolumn="17" endcolumn="72" rule="LocalVariableCouldBeFinal" ruleset="Code Style" package="assignment4" class="VenueTest" method="testEquals" variable="testVenue" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#localvariablecouldbefinal" priority="3">
+Local variable 'testVenue' could be declared final
+</violation>
+<violation beginline="62" endline="62" begincolumn="17" endcolumn="33" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="assignment4" class="VenueTest" method="testEquals" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertTrue' due to existing static import 'org.junit.Assert.*'
+</violation>
+<violation beginline="67" endline="67" begincolumn="17" endcolumn="54" rule="LocalVariableCouldBeFinal" ruleset="Code Style" package="assignment4" class="VenueTest" method="testHashCode" variable="hash" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#localvariablecouldbefinal" priority="3">
+Local variable 'hash' could be declared final
+</violation>
+<violation beginline="68" endline="68" begincolumn="17" endcolumn="35" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="assignment4" class="VenueTest" method="testHashCode" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Assert.assertEquals' due to existing static import 'org.junit.Assert.*'
+</violation>
+</file>
+</pmd>

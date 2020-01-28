@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CriteriaParserTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2019-10-15T03:02:36" hostname="DESKTOP-PTI2NAV" time="0.097">
+  <properties/>
+  <testcase name="parseData" classname="CriteriaParserTest" time="0.031"/>
+  <testcase name="getBudgetPriority" classname="CriteriaParserTest" time="0.003"/>
+  <testcase name="getFloorOrWall" classname="CriteriaParserTest" time="0.003"/>
+  <testcase name="getRequiredColor" classname="CriteriaParserTest" time="0.002"/>
+  <testcase name="getRequiredShelf" classname="CriteriaParserTest" time="0.006"/>
+  <testcase name="getRequiredWidth" classname="CriteriaParserTest" time="0.003"/>
+  <testcase name="convertHeightToSize" classname="CriteriaParserTest" time="0.03"/>
+  <testcase name="getRequiredDrawer" classname="CriteriaParserTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

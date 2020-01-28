@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment2-refactoring</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">import org.json.simple.JSONObject;
+
+/**
+ * This class represents the main that keeps track of the requirements, tells the criteria parser
+ * to read data, and directs the result generator to generate a recommendation result from the user
+ * requirements.
+ */
+<span class="nc" id="L8">public class Main {</span>
+	private static CriteriaParser criteriaParser;
+	private static JSONObject criteriaDetails;
+	private static ResultGenerator resultGenerator;
+	private static int requiredWidth;
+	private static String requiredHeight;
+	private static int requiredShelf;
+	private static int requiredDrawer;
+	private static String colorPreference;
+	private static String floorOrWall;
+	private static boolean budgetPriority;
+	private static int numCabinet;
+
+	/**
+	 * The main method that instructs the criteria parser to read the given JSON criteria file and
+	 * the result generator to output a JSON recommendation file.
+	 * @param args the args of the main method
+	 */
+	public static void main(String[] args) {
+<span class="nc" id="L27">		criteriaParser = new CriteriaParser();</span>
+<span class="nc" id="L28">		criteriaDetails = criteriaParser.parseData();</span>
+
+		// Finds user criteria
+<span class="nc" id="L31">		requiredWidth = criteriaParser.getRequiredWidth(criteriaDetails);</span>
+<span class="nc" id="L32">		requiredHeight = criteriaParser.convertHeightToSize(criteriaDetails);</span>
+<span class="nc" id="L33">		requiredShelf = criteriaParser.getRequiredShelf(criteriaDetails);</span>
+<span class="nc" id="L34">		requiredDrawer = criteriaParser.getRequiredDrawer(criteriaDetails);</span>
+<span class="nc" id="L35">		colorPreference = criteriaParser.getRequiredColor(criteriaDetails);</span>
+<span class="nc" id="L36">		floorOrWall = criteriaParser.getFloorOrWall(criteriaDetails);</span>
+<span class="nc" id="L37">		budgetPriority = criteriaParser.getBudgetPriority(criteriaDetails);</span>
+
+<span class="nc" id="L39">		resultGenerator = new ResultGenerator(requiredWidth, requiredHeight, requiredShelf,</span>
+				requiredDrawer, colorPreference, floorOrWall, budgetPriority);
+<span class="nc" id="L41">		resultGenerator.calculates(requiredWidth, requiredHeight, requiredShelf,</span>
+				requiredDrawer, colorPreference, floorOrWall, budgetPriority);
+<span class="nc" id="L43">		resultGenerator.generateResult();</span>
+<span class="nc" id="L44">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Cabinet.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment2-refactoring</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Cabinet.java</span></div><h1>Cabinet.java</h1><pre class="source lang-java linenums">/**
+ * This class represents the idea for a cabinet line with basic representation of product
+ * details--height, width, depth, size, floor mount option, wall mount option, and earthquake
+ * safety requirement.
+ */
+public class Cabinet extends AbstractFurniture {
+<span class="fc" id="L7">	private final int FULL_DEPTH = 16;</span>
+<span class="fc" id="L8">	private final int MAX_SHELF_NUM_WARDROBE = 7;</span>
+<span class="fc" id="L9">	private final int MAX_SHELF_NUM_HALF = 3;</span>
+<span class="fc" id="L10">	private final int MAX_SHELF_NUM_QUARTER = 3;</span>
+	private int depth;
+	private boolean floorMountOption;
+	private boolean wallMountOption;
+	private boolean earthquakeSafety;
+	private int maxShelfNum;
+
+	/**
+	 * Constructs a cabinet given the size of the requirement.
+	 * @param size the size of the cabinet
+	 */
+	public Cabinet(String size) {
+<span class="fc" id="L22">		super(size);</span>
+<span class="fc" id="L23">		this.depth = FULL_DEPTH;</span>
+<span class="fc" id="L24">		this.earthquakeSafety = setEarthquakeSafety(size);</span>
+<span class="fc" id="L25">		this.floorMountOption = setFloorMountOption(size);</span>
+<span class="fc" id="L26">		this.wallMountOption = setWallMountOption(size);</span>
+<span class="fc" id="L27">		setMaxShelfNum(size);</span>
+<span class="fc" id="L28">	}</span>
+
+	/**
+	 * Sets floor mount option given the size of the cabinet.
+	 * @param size the size/height of the cabinet
+	 * @return true if the size if wardrobe
+	 */
+	private boolean setFloorMountOption(String size) {
+<span class="fc" id="L36">		return size.equals(&quot;wardrobe&quot;);</span>
+	}
+
+	/**
+	 * Returns the floor mount option availability.
+	 * @return the floor mount option availability
+	 */
+	public boolean getFloorMountOption() {
+<span class="fc" id="L44">		return this.floorMountOption;</span>
+	}
+
+	/**
+	 * Sets the wall mount option given the size of the cabinet.
+	 * @param size the size of the cabinet
+	 * @return true if the size is other than wardrobe
+	 */
+	private boolean setWallMountOption(String size) {
+<span class="fc bfc" id="L53" title="All 2 branches covered.">		return !size.equals(&quot;wardrobe&quot;);</span>
+	}
+
+	/**
+	 * eturns the wall mount option availability.
+	 * @return the wall mount option availability
+	 */
+	public boolean getWallMountOption() {
+<span class="fc" id="L61">		return this.wallMountOption;</span>
+	}
+
+	/**
+	 * Returns the earthquake safety requirement.
+	 * @return the earthquake safety requirement
+	 */
+	public boolean getEarthquakeSafety() {
+<span class="fc" id="L69">		return this.earthquakeSafety;</span>
+	}
+
+	/**
+	 * Sets the earthquake safety requirement based on the size of the cabinet.
+	 * @param size the size of the cabinet
+	 * @return true if size is wardrobe
+	 */
+	private boolean setEarthquakeSafety(String size) {
+<span class="fc" id="L78">		return size.equals(&quot;wardrobe&quot;);</span>
+	}
+
+	/**
+	 * Sets the maximum number of shelves the cabinet can hold.
+	 */
+	public void setMaxShelfNum(String size) {
+<span class="pc bpc" id="L85" title="1 of 2 branches missed.">		if (size.equals(&quot;wardrobe&quot;)) {</span>
+<span class="fc" id="L86">			this.maxShelfNum = MAX_SHELF_NUM_WARDROBE;</span>
+<span class="nc bnc" id="L87" title="All 2 branches missed.">		} else if (size.equals(&quot;half&quot;)) {</span>
+<span class="nc" id="L88">			this.maxShelfNum = MAX_SHELF_NUM_HALF;</span>
+		} else {
+<span class="nc" id="L90">			this.maxShelfNum = MAX_SHELF_NUM_QUARTER;</span>
+		}
+<span class="fc" id="L92">	}</span>
+
+	/**
+	 * Returns the maximum number of shelves the cabinet can hold.
+	 * @return the maximum number of shelves
+	 */
+	public int getMaxShelfNum() {
+<span class="fc" id="L99">		return this.maxShelfNum;</span>
+	}
+
+	/**
+	 * Returns the depth of the cabinet.
+	 * @return the depth of the cabinet
+	 */
+	public int getDepth() {
+<span class="fc" id="L107">		return this.depth;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

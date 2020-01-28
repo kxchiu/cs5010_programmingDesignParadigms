@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="PersonTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2019-10-06T23:54:57" hostname="DESKTOP-PTI2NAV" time="0.009">
+  <properties/>
+  <testcase name="getZip" classname="PersonTest" time="0.003"/>
+  <testcase name="getCompanyName" classname="PersonTest" time="0.001"/>
+  <testcase name="testToString" classname="PersonTest" time="0.0"/>
+  <testcase name="getAddress" classname="PersonTest" time="0.0"/>
+  <testcase name="getCity" classname="PersonTest" time="0.0"/>
+  <testcase name="getFirstName" classname="PersonTest" time="0.0"/>
+  <testcase name="getCounty" classname="PersonTest" time="0.0"/>
+  <testcase name="getLastName" classname="PersonTest" time="0.0"/>
+  <testcase name="testHashCode" classname="PersonTest" time="0.0"/>
+  <testcase name="testEquals" classname="PersonTest" time="0.0"/>
+  <testcase name="getEmail" classname="PersonTest" time="0.0"/>
+  <testcase name="getState" classname="PersonTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

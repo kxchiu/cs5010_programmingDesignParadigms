@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ChatClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment8</a> &gt; <a href="index.source.html" class="el_package">assignment8</a> &gt; <span class="el_source">ChatClient.java</span></div><h1>ChatClient.java</h1><pre class="source lang-java linenums">package assignment8;
+
+import java.io.*;
+import java.net.Socket;
+
+public class ChatClient implements Runnable {
+
+<span class="nc" id="L8">  private static final Integer portNumber = 1235;</span>
+  private static final String hostName = &quot;localhost&quot;;
+
+  private Socket socket;
+  private ChatClientThread thread;
+  private BufferedReader console;
+  private DataOutputStream streamOut;
+  private DataInputStream streamIn;
+  private ChatClientThread client;
+  private InputInterpreter interpreter;
+  private String username;
+
+
+
+<span class="nc" id="L22">  public ChatClient() {</span>
+<span class="nc" id="L23">    System.out.println(&quot;Establishing connection. Please wait...&quot;);</span>
+    try {
+<span class="nc" id="L25">      socket = new Socket(hostName, portNumber);</span>
+<span class="nc" id="L26">      System.out.println(&quot;Connected: &quot; + socket);</span>
+<span class="nc" id="L27">      console = new BufferedReader(new InputStreamReader(System.in));</span>
+<span class="nc" id="L28">      streamOut = new DataOutputStream(socket.getOutputStream());</span>
+<span class="nc" id="L29">      streamIn = new DataInputStream(socket.getInputStream());</span>
+<span class="nc" id="L30">      interpreter = new InputInterpreter(streamOut, console, this);</span>
+<span class="nc" id="L31">      thread = new ChatClientThread(this, socket);</span>
+<span class="nc" id="L32">      thread.start();</span>
+<span class="nc" id="L33">      printOptions();</span>
+<span class="nc" id="L34">    } catch (IOException ioe) {</span>
+<span class="nc" id="L35">      System.out.println(&quot;Unexpected exception: &quot; + ioe.getMessage());</span>
+<span class="nc" id="L36">    }</span>
+<span class="nc" id="L37">  }</span>
+
+  public String getUsername() {
+<span class="nc" id="L40">    return this.username;</span>
+  }
+
+  public void setUsername(String username) {
+<span class="nc" id="L44">    this.username = username;</span>
+<span class="nc" id="L45">  }</span>
+
+  public void printOptions() {
+<span class="nc" id="L48">    System.out.println();</span>
+<span class="nc" id="L49">    System.out.println(&quot;Chat Options:&quot;);</span>
+<span class="nc" id="L50">    System.out.println(&quot;Logging On: \&quot;logon [username]\&quot;&quot;);</span>
+<span class="nc" id="L51">    System.out.println(&quot;Logging Off: \&quot;logoff\&quot;&quot;);</span>
+<span class="nc" id="L52">    System.out.println(&quot;Query Users: \&quot;who\&quot;&quot;);</span>
+<span class="nc" id="L53">    System.out.println(&quot;Direct Messaging: \&quot;@user [recipient] [message]\&quot;&quot;);</span>
+<span class="nc" id="L54">    System.out.println(&quot;Broadcast Messaging: \&quot;@all [message]\&quot;&quot;);</span>
+<span class="nc" id="L55">    System.out.println(&quot;Direct Insulting: \&quot;!user [recipient]\&quot;&quot;);</span>
+<span class="nc" id="L56">    System.out.println();</span>
+<span class="nc" id="L57">  }</span>
+
+  public void run() {
+    while (true) {
+      try {
+<span class="nc" id="L62">        interpreter.interpret(console.readLine());</span>
+<span class="nc" id="L63">      } catch (IOException e) {</span>
+<span class="nc" id="L64">        e.printStackTrace();</span>
+<span class="nc" id="L65">      }</span>
+    }
+  }
+
+  public static void main(String[] args) {
+<span class="nc" id="L70">    Thread client = new Thread(new ChatClient());</span>
+<span class="nc" id="L71">    client.start();</span>
+<span class="nc" id="L72">  }</span>
+
+//  public static void main(String[] args) throws IOException {
+//    try (Socket socket = new Socket(hostName, portNumber)) {
+//      DataInputStream inputStream = new DataInputStream(socket.getInputStream());
+//      DataOutputStream outputStream = new DataOutputStream(socket.getOutputStream());
+//      BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+//      InputInterpreter inputInterpreter = new InputInterpreter(outputStream, stdIn);
+//
+//      inputInterpreter.interpret(&quot;connect&quot;);
+//
+//      Integer id;
+//      while ((id = inputStream.readInt()) != -1) {
+//        inputStream.readChar();
+//        chatProtocol.processInput(inputStream, outputStream, id);
+//        String input = stdIn.readLine();
+//        while (inputInterpreter.cannotInterpret(input)) {
+//          System.out.println(&quot;Invalid command. Please try again or type '?' to view the options.&quot;);
+//          input = stdIn.readLine();
+//        }
+//        inputInterpreter.interpret(input);
+//      }
+//    }
+//  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
